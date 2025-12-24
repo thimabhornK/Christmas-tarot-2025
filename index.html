@@ -1,0 +1,963 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Tarot 2025 - By Thimabhorn K.</title>
+    <meta name="description" content="Discover your 2025 fortune with Christmas Tarot cards">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1080px;
+            height: 1920px;
+            background: #FEF9E1;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Common styles */
+        .page {
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 64px;
+            color: #A31D1D;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header p {
+            font-size: 28px;
+            color: #6D2323;
+            font-style: italic;
+        }
+
+        .page-header .from {
+            font-size: 24px;
+            color: #E5D0AC;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Snowflake animation */
+        .snowflake {
+            position: absolute;
+            color: #E5D0AC;
+            font-size: 40px;
+            animation: fall linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(2000px) rotate(360deg);
+            }
+        }
+
+        /* Page 1: Name Input */
+        .name-input-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .input-box {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 80px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(163, 29, 29, 0.2);
+            border: 3px solid #E5D0AC;
+        }
+
+        .christmas-icon {
+            text-align: center;
+            font-size: 120px;
+            margin-bottom: 40px;
+        }
+
+        label {
+            display: block;
+            font-size: 32px;
+            color: #6D2323;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 30px;
+            font-size: 32px;
+            border: 3px solid #E5D0AC;
+            border-radius: 15px;
+            font-family: 'Georgia', serif;
+            color: #6D2323;
+            background: #FEF9E1;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #A31D1D;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 30px;
+            font-size: 28px;
+            border: 3px solid #E5D0AC;
+            border-radius: 15px;
+            font-family: 'Georgia', serif;
+            color: #6D2323;
+            background: #FEF9E1;
+            resize: vertical;
+            min-height: 200px;
+            line-height: 1.6;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #A31D1D;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 35px;
+            font-size: 36px;
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
+            color: #FEF9E1;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(163, 29, 29, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #E5D0AC, #A89171);
+            margin-top: 20px;
+            font-size: 28px;
+            padding: 25px;
+        }
+
+        /* Page 2: Card Selection */
+        .card-selection-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .instruction {
+            font-size: 36px;
+            color: #6D2323;
+            text-align: center;
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #E5D0AC;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .tarot-card {
+            width: 200px;
+            height: 350px;
+            background: linear-gradient(135deg, #6D2323, #A31D1D);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            border: 5px solid #E5D0AC;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tarot-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(163, 29, 29, 0.5);
+        }
+
+        .tarot-card::before {
+            content: '✨';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: #FEF9E1;
+        }
+
+        .tarot-card.flipped {
+            animation: flip 0.6s ease-in-out;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: rotateY(0deg);
+            }
+            50% {
+                transform: rotateY(90deg);
+            }
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+
+        /* Page 3: Card Result */
+        .result-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .card-reveal {
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(163, 29, 29, 0.2);
+            border: 3px solid #E5D0AC;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .card-image {
+            font-size: 150px;
+            margin-bottom: 40px;
+        }
+
+        .card-name {
+            font-size: 56px;
+            color: #A31D1D;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .card-prediction {
+            font-size: 32px;
+            color: #6D2323;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .christmas-wish {
+            background: #FEF9E1;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #A31D1D;
+            margin-top: 40px;
+        }
+
+        .wish-label {
+            font-size: 28px;
+            color: #A31D1D;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .wish-text {
+            font-size: 32px;
+            color: #6D2323;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .wish-signature {
+            font-size: 28px;
+            color: #A31D1D;
+            margin-top: 20px;
+            font-family: 'Brush Script MT', cursive;
+            text-align: right;
+        }
+
+        /* Page 4: User Wish Input */
+        .wish-input-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        /* Page 5: Final Page */
+        .final-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .thank-you-box {
+            background: white;
+            padding: 80px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(163, 29, 29, 0.2);
+            border: 3px solid #E5D0AC;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .thank-you-icon {
+            font-size: 150px;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-text {
+            font-size: 48px;
+            color: #A31D1D;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .thank-you-message {
+            font-size: 32px;
+            color: #6D2323;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
+            color: #FEF9E1;
+            border: 5px solid #E5D0AC;
+            border-radius: 50%;
+            font-size: 60px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(163, 29, 29, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(163, 29, 29, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Modal for wishes */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #FEF9E1;
+            padding: 60px;
+            border-radius: 30px;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 5px solid #E5D0AC;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-title {
+            font-size: 48px;
+            color: #A31D1D;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            font-size: 48px;
+            color: #6D2323;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: transparent;
+            transition: transform 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .wishes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .wish-item {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #E5D0AC;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .wish-item-name {
+            font-size: 28px;
+            color: #A31D1D;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .wish-item-text {
+            font-size: 24px;
+            color: #6D2323;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .no-wishes {
+            text-align: center;
+            font-size: 32px;
+            color: #6D2323;
+            padding: 60px;
+            font-style: italic;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .page {
+                padding: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 40px;
+            }
+
+            .page-header p {
+                font-size: 20px;
+            }
+
+            .input-box {
+                padding: 40px;
+            }
+
+            input[type="text"],
+            textarea {
+                font-size: 20px;
+                padding: 20px;
+            }
+
+            .btn {
+                font-size: 24px;
+                padding: 20px;
+            }
+
+            .tarot-card {
+                width: 150px;
+                height: 250px;
+            }
+
+            .card-name {
+                font-size: 36px;
+            }
+
+            .card-prediction {
+                font-size: 22px;
+            }
+
+            .floating-btn {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .modal-content {
+                padding: 30px;
+            }
+
+            .modal-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1: Name Input -->
+        <div class="page active" id="page1">
+            <div class="page-header">
+                <h1>🎄 Christmas Tarot 2025 🎄</h1>
+                <p>Discover Your Fortune for the New Year</p>
+                <p class="from">✨ From Thimabhorn K. ✨</p>
+            </div>
+            <div class="name-input-content">
+                <div class="input-box">
+                    <div class="christmas-icon">🎅</div>
+                    <label for="userName">What's your name?</label>
+                    <input type="text" id="userName" placeholder="Enter your name..." required>
+                    <button class="btn" onclick="goToCardSelection()">Continue ➜</button>
+                </div>
+            </div>
+            <!-- Decorations -->
+            <div class="decoration" style="top: 10%; left: 5%;">⭐</div>
+            <div class="decoration" style="top: 15%; right: 8%;">✨</div>
+            <div class="decoration" style="bottom: 20%; left: 10%;">🎄</div>
+            <div class="decoration" style="bottom: 15%; right: 5%;">🎁</div>
+        </div>
+
+        <!-- Page 2: Card Selection -->
+        <div class="page" id="page2">
+            <div class="page-header">
+                <h1>🔮 Choose Your Card 🔮</h1>
+                <p>Pick a card to reveal your 2025 fortune</p>
+            </div>
+            <div class="card-selection-content">
+                <div class="instruction">
+                    <span id="userNameDisplay"></span>, select one card that calls to you...
+                </div>
+                <div class="cards-container">
+                    <div class="tarot-card" onclick="selectCard(0)"></div>
+                    <div class="tarot-card" onclick="selectCard(1)"></div>
+                    <div class="tarot-card" onclick="selectCard(2)"></div>
+                    <div class="tarot-card" onclick="selectCard(3)"></div>
+                </div>
+            </div>
+            <div class="decoration" style="top: 5%; left: 3%;">🌟</div>
+            <div class="decoration" style="top: 8%; right: 5%;">✨</div>
+            <div class="decoration" style="bottom: 10%; left: 7%;">🎄</div>
+            <div class="decoration" style="bottom: 12%; right: 4%;">❄️</div>
+        </div>
+
+        <!-- Page 3: Card Result -->
+        <div class="page" id="page3">
+            <div class="page-header">
+                <h1>✨ Your 2025 Fortune ✨</h1>
+            </div>
+            <div class="result-content">
+                <div class="card-reveal">
+                    <div class="card-image" id="cardEmoji"></div>
+                    <div class="card-name" id="cardName"></div>
+                    <div class="card-prediction" id="cardPrediction"></div>
+                    
+                    <div class="christmas-wish">
+                        <div class="wish-label">🎄 Christmas Wishes from Thimabhorn K. 🎄</div>
+                        <div class="wish-text" id="christmasWishText"></div>
+                        <div class="wish-signature">- Thimabhorn K.</div>
+                    </div>
+
+                    <button class="btn" onclick="goToWishInput()">Send Your Wishes Back ➜</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 4: User Wish Input -->
+        <div class="page" id="page4">
+            <div class="page-header">
+                <h1>💝 Your Turn 💝</h1>
+                <p>Send your wishes to Thimabhorn K.</p>
+            </div>
+            <div class="wish-input-content">
+                <div class="input-box">
+                    <div class="christmas-icon">💌</div>
+                    <label for="userWish">Write your wishes for Thimabhorn K.</label>
+                    <textarea id="userWish" placeholder="Share your heartfelt wishes and blessings..." required></textarea>
+                    <button class="btn" onclick="submitWish()">Send Wishes ✨</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5: Final Thank You -->
+        <div class="page" id="page5">
+            <div class="final-content">
+                <div class="thank-you-box">
+                    <div class="thank-you-icon">🎉</div>
+                    <div class="thank-you-text">Thank You!</div>
+                    <div class="thank-you-message">
+                        Your wishes have been received with gratitude. May the magic of Christmas fill your heart with joy and the New Year bring you endless blessings! ✨
+                    </div>
+                    <div class="christmas-icon">🎄⛄🎅🎁❄️</div>
+                    <button class="btn" onclick="startOver()">Start Over 🔄</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Button -->
+    <button class="floating-btn" id="floatingBtn" onclick="showWishesModal()" style="display: none;" title="View All Wishes">
+        💝
+    </button>
+
+    <!-- Wishes Modal -->
+    <div class="modal" id="wishesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">💝 All Wishes</h2>
+                <button class="close-btn" onclick="closeWishesModal()">×</button>
+            </div>
+            <div class="wishes-list" id="wishesList"></div>
+        </div>
+    </div>
+
+    <script>
+        // Tarot cards data
+        const tarotCards = [
+            {
+                name: "The Star",
+                emoji: "⭐",
+                prediction: "Hope and renewal await you in 2025! Your dreams will guide you toward success. Trust in yourself and embrace new opportunities with open arms.",
+                wish: "May your path be illuminated with hope and your dreams turn into beautiful realities. Believe in the magic within you! ✨"
+            },
+            {
+                name: "The Sun",
+                emoji: "☀️",
+                prediction: "Joy and abundance shine upon you! 2025 brings warmth, success, and happiness to all aspects of your life. Celebrate every moment!",
+                wish: "Wishing you endless sunshine, laughter, and prosperity. May every day sparkle with joy and wonderful surprises! 🌟"
+            },
+            {
+                name: "The World",
+                emoji: "🌍",
+                prediction: "Completion and achievement are yours! You'll reach important milestones and find harmony in 2025. The world is truly yours to explore!",
+                wish: "May you conquer your goals and discover new horizons. Your journey will be filled with accomplishments and beautiful adventures! 🎊"
+            },
+            {
+                name: "The Lovers",
+                emoji: "💕",
+                prediction: "Love and meaningful connections blossom in 2025! Whether romance or friendship, deep bonds will bring you immense happiness and support.",
+                wish: "May love surround you always, and may you find harmony in all relationships. Your heart will overflow with warmth and affection! 💖"
+            },
+            {
+                name: "Wheel of Fortune",
+                emoji: "🎡",
+                prediction: "Good fortune spins your way! Positive changes and lucky opportunities will come unexpectedly in 2025. Embrace the exciting turns ahead!",
+                wish: "May luck be your constant companion and destiny smile upon you. Get ready for wonderful surprises and favorable winds! 🍀"
+            },
+            {
+                name: "The Magician",
+                emoji: "🎩",
+                prediction: "Your talents and skills will manifest into reality! 2025 empowers you to create, innovate, and transform your visions into achievements.",
+                wish: "May you harness your inner power and create miracles. Your potential is limitless, and magic flows through everything you do! ✨"
+            },
+            {
+                name: "Strength",
+                emoji: "🦁",
+                prediction: "Inner courage and resilience define your 2025! You'll overcome challenges with grace and emerge stronger, braver, and more confident than ever.",
+                wish: "May you find strength in every challenge and courage in every step. You are powerful beyond measure! 💪"
+            },
+            {
+                name: "The Empress",
+                emoji: "👑",
+                prediction: "Abundance and creativity flourish in your life! 2025 brings growth, nurturing energy, and the birth of beautiful new projects and ideas.",
+                wish: "May prosperity and beauty surround you. Your creative spirit will bloom and bring forth magnificent creations! 🌺"
+            }
+        ];
+
+        // User data
+        let currentUser = {
+            name: '',
+            selectedCard: null,
+            wish: ''
+        };
+
+        // Wishes storage
+        let allWishes = JSON.parse(localStorage.getItem('christmasWishes')) || [];
+
+        // Create snowflakes
+        function createSnowflakes() {
+            const container = document.querySelector('.container');
+            const snowflakeSymbols = ['❄', '❅', '❆', '✻', '✼'];
+            
+            for (let i = 0; i < 20; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.style.fontSize = (Math.random() * 20 + 25) + 'px';
+                container.appendChild(snowflake);
+            }
+        }
+
+        // Navigation functions
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function goToCardSelection() {
+            const userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                alert('Please enter your name! 😊');
+                return;
+            }
+            currentUser.name = userName;
+            document.getElementById('userNameDisplay').textContent = userName;
+            showPage('page2');
+        }
+
+        function selectCard(index) {
+            // Randomly select a card for variety
+            const randomCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+            currentUser.selectedCard = randomCard;
+
+            // Add flip animation
+            const cards = document.querySelectorAll('.tarot-card');
+            cards[index].classList.add('flipped');
+
+            // Show result after animation
+            setTimeout(() => {
+                document.getElementById('cardEmoji').textContent = randomCard.emoji;
+                document.getElementById('cardName').textContent = randomCard.name;
+                document.getElementById('cardPrediction').textContent = randomCard.prediction;
+                document.getElementById('christmasWishText').textContent = randomCard.wish;
+                showPage('page3');
+            }, 600);
+        }
+
+        function goToWishInput() {
+            showPage('page4');
+        }
+
+        function submitWish() {
+            const wishText = document.getElementById('userWish').value.trim();
+            if (!wishText) {
+                alert('Please write your wishes! 💝');
+                return;
+            }
+
+            currentUser.wish = wishText;
+
+            // Save to storage
+            allWishes.push({
+                name: currentUser.name,
+                wish: wishText,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('christmasWishes', JSON.stringify(allWishes));
+
+            // Show final page and floating button
+            showPage('page5');
+            document.getElementById('floatingBtn').style.display = 'flex';
+        }
+
+        function startOver() {
+            // Reset form
+            document.getElementById('userName').value = '';
+            document.getElementById('userWish').value = '';
+            currentUser = { name: '', selectedCard: null, wish: '' };
+            
+            // Reset card animations
+            document.querySelectorAll('.tarot-card').forEach(card => {
+                card.classList.remove('flipped');
+            });
+
+            showPage('page1');
+        }
+
+        function showWishesModal() {
+            const modal = document.getElementById('wishesModal');
+            const wishesList = document.getElementById('wishesList');
+            
+            wishesList.innerHTML = '';
+
+            if (allWishes.length === 0) {
+                wishesList.innerHTML = '<div class="no-wishes">No wishes yet. Be the first to send your wishes! 🎄</div>';
+            } else {
+                allWishes.forEach(wish => {
+                    const wishItem = document.createElement('div');
+                    wishItem.className = 'wish-item';
+                    wishItem.innerHTML = `
+                        <div class="wish-item-name">From: ${wish.name}</div>
+                        <div class="wish-item-text">"${wish.wish}"</div>
+                    `;
+                    wishesList.appendChild(wishItem);
+                });
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeWishesModal() {
+            document.getElementById('wishesModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('wishesModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeWishesModal();
+            }
+        });
+
+        // Initialize
+        createSnowflakes();
+
+        // Show floating button if there are wishes
+        if (allWishes.length > 0) {
+            document.getElementById('floatingBtn').style.display = 'flex';
+        }
+
+        // Debounced resize handler
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Handle responsive adjustments if needed
+            }, 250);
+        });
+    </script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
