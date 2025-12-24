@@ -18,8 +18,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Christmas Tarot 2025 - By Thimabhorn K.</title>
-    <meta name="description" content="Discover your 2025 fortune with Christmas Tarot cards">
+    <title>Christmas Tarot 2026 - By Thimabhorn K.</title>
+    <meta name="description" content="Discover your 2026 fortune with Christmas Tarot cards">
     <style>
         * {
             margin: 0;
@@ -30,22 +30,21 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #A31D1D, #6D2323);
             overflow: hidden;
             height: 100vh;
             width: 100vw;
             position: fixed;
+            background: #000;
         }
 
         .container {
             width: 100vw;
             height: 100vh;
-            background: #FEF9E1;
             overflow: hidden;
             position: relative;
         }
 
-        /* Common styles */
+        /* Christmas gradient backgrounds */
         .page {
             width: 100%;
             height: 100%;
@@ -53,286 +52,931 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             position: absolute;
             top: 0;
             left: 0;
+            background: linear-gradient(135deg, #6D2323, #A31D1D, #6D2323);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        #page1 {
+            background: linear-gradient(135deg, #A31D1D, #6D2323, #A31D1D);
+            background-size: 400% 400%;
+        }
+
+        #page2 {
+            background: linear-gradient(135deg, #6D2323, #A31D1D, #8B0000);
+            background-size: 400% 400%;
+        }
+
+        #page3 {
+            background: linear-gradient(135deg, #A31D1D, #8B0000, #A31D1D);
+            background-size: 400% 400%;
+        }
+
+        #page4 {
+            background: linear-gradient(135deg, #6D2323, #A31D1D, #6D2323);
+            background-size: 400% 400%;
+        }
+
+        #page5 {
+            background: linear-gradient(135deg, #A31D1D, #6D2323, #A31D1D);
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .page.active {
             display: flex;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .page-header h1 {
-            font-size: clamp(28px, 6vw, 42px);
-            color: #A31D1D;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .page-header p {
-            font-size: clamp(14px, 3.5vw, 18px);
-            color: #6D2323;
-            font-style: italic;
-        }
-
-        .page-header .from {
-            font-size: clamp(12px, 3vw, 16px);
-            color: #E5D0AC;
-            margin-top: 5px;
-            font-weight: bold;
-        }
-
-        /* Snowflake animation */
-        .snowflake {
+        /* Christmas particles - Snow */
+        .particle {
             position: absolute;
             color: #E5D0AC;
-            font-size: clamp(20px, 4vw, 30px);
-            animation: fall linear infinite;
-            opacity: 0.5;
-            z-index: 1;
+            font-size: clamp(15px, 4vw, 25px);
             pointer-events: none;
+            animation: fall linear infinite;
+            text-shadow: 0 0 10px rgba(229, 208, 172, 0.8);
+            z-index: 1;
         }
 
         @keyframes fall {
             0% {
                 transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
             }
             100% {
                 transform: translateY(calc(100vh + 50px)) rotate(360deg);
+                opacity: 0;
             }
+        }
+
+        /* Twinkling stars */
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #E5D0AC;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #E5D0AC;
+            animation: twinkle 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Christmas lights border */
+        .christmas-lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .light {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 20px currentColor; }
+        }
+
+        /* Page headers */
+        .page-header {
+            text-align: center;
+            margin-bottom: 15px;
+            animation: bounceIn 1s ease;
+            z-index: 2;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .page-header h1 {
+            font-size: clamp(24px, 6vw, 38px);
+            background: linear-gradient(45deg, #FEF9E1, #E5D0AC, #FEF9E1, #E5D0AC);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+            text-shadow: 0 0 40px rgba(254, 249, 225, 0.8);
+            animation: shimmerBright 2s linear infinite;
+            font-weight: bold;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 10px rgba(229, 208, 172, 0.8));
+        }
+
+        @keyframes shimmerBright {
+            to { background-position: 300% center; }
+        }
+
+        .page-header p {
+            font-size: clamp(12px, 3vw, 16px);
+            color: #FEF9E1;
+            font-style: italic;
+            text-shadow: 0 0 15px rgba(254, 249, 225, 0.6);
+            font-weight: bold;
+        }
+
+        .page-header .from {
+            font-size: clamp(11px, 2.5vw, 14px);
+            color: #E5D0AC;
+            margin-top: 4px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(229, 208, 172, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Content boxes */
         .content-box {
             width: 100%;
-            max-width: 500px;
-            background: white;
-            padding: clamp(25px, 5vw, 40px);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(163, 29, 29, 0.2);
+            max-width: 450px;
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.98), rgba(229, 208, 172, 0.98));
+            padding: clamp(20px, 4.5vw, 28px);
+            border-radius: 25px;
+            box-shadow: 
+                0 0 60px rgba(229, 208, 172, 0.6),
+                inset 0 0 80px rgba(254, 249, 225, 0.3),
+                0 20px 70px rgba(0, 0, 0, 0.3);
+            border: 4px solid #E5D0AC;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(229, 208, 172, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .christmas-icon {
+            font-size: clamp(50px, 12vw, 70px);
+            margin-bottom: 12px;
+            animation: iconBounce 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(229, 208, 172, 0.8));
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 1;
+        }
+
+        .christmas-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        label {
+            font-size: clamp(15px, 3.5vw, 20px);
+            background: linear-gradient(45deg, #A31D1D, #6D2323, #A31D1D);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+            animation: shimmerBright 2s linear infinite;
+            z-index: 1;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: clamp(12px, 2.8vw, 16px);
+            font-size: clamp(14px, 3vw, 17px);
             border: 3px solid #E5D0AC;
+            border-radius: 18px;
+            font-family: 'Georgia', serif;
+            color: #6D2323;
+            background: linear-gradient(135deg, #FEF9E1, #FFFEF5);
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: inset 0 0 20px rgba(229, 208, 172, 0.2);
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #A31D1D;
+            transform: scale(1.02);
+            box-shadow: 
+                0 0 30px rgba(163, 29, 29, 0.6),
+                inset 0 0 40px rgba(229, 208, 172, 0.3);
+        }
+
+        .form-row {
+            width: 100%;
+            margin-bottom: 15px;
+            z-index: 1;
+        }
+
+        .input-hint {
+            font-size: clamp(10px, 2.2vw, 12px);
+            color: #6D2323;
+            margin-top: 5px;
+            font-style: italic;
+            text-align: center;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: clamp(14px, 3.2vw, 18px);
+            font-size: clamp(15px, 3.2vw, 18px);
+            background: linear-gradient(135deg, #A31D1D, #6D2323, #A31D1D);
+            background-size: 200% auto;
+            color: #FEF9E1;
+            border: 4px solid #E5D0AC;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            box-shadow: 
+                0 0 30px rgba(163, 29, 29, 0.6),
+                inset 0 0 30px rgba(254, 249, 225, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: buttonGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 30px rgba(163, 29, 29, 0.6),
+                    inset 0 0 30px rgba(254, 249, 225, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 50px rgba(229, 208, 172, 0.8),
+                    inset 0 0 50px rgba(254, 249, 225, 0.4);
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(254, 249, 225, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            background-position: 100% center;
+        }
+
+        /* Fortune room */
+        .fortune-room {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .crystal-ball {
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle at 35% 35%, #FEF9E1, #E5D0AC, #A31D1D, #6D2323);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 60px rgba(229, 208, 172, 0.9),
+                inset 0 0 50px rgba(254, 249, 225, 0.5);
+            animation: crystalFloat 3s ease-in-out infinite;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .crystal-ball:hover {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        @keyframes crystalFloat {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 60px rgba(229, 208, 172, 0.9),
+                    inset 0 0 50px rgba(254, 249, 225, 0.5);
+                transform: translateY(0) scale(1);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 80px rgba(229, 208, 172, 1),
+                    inset 0 0 70px rgba(254, 249, 225, 0.8);
+                transform: translateY(-15px) scale(1.1);
+            }
+        }
+
+        .instruction {
+            font-size: clamp(13px, 3vw, 16px);
+            color: #FEF9E1;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: clamp(15px, 3.5vw, 22px);
+            border-radius: 22px;
+            max-width: 450px;
+            text-shadow: 0 0 15px rgba(254, 249, 225, 0.8);
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.2), rgba(229, 208, 172, 0.2));
+            border: 3px solid rgba(229, 208, 172, 0.6);
+            box-shadow: 
+                0 0 40px rgba(229, 208, 172, 0.4),
+                inset 0 0 40px rgba(254, 249, 225, 0.1);
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            animation: floatInstruction 3s ease-in-out infinite;
+        }
+
+        @keyframes floatInstruction {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Card deck */
+        .card-deck {
+            position: relative;
+            width: 200px;
+            height: 320px;
+            margin: 0 auto 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: deckFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes deckFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .card-deck:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-deck:active {
+            transform: scale(0.95) rotate(-5deg);
+        }
+
+        .deck-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #A31D1D, #6D2323, #8B0000);
+            border-radius: 18px;
+            border: 5px solid #E5D0AC;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 50px rgba(229, 208, 172, 0.6),
+                inset 0 0 50px rgba(254, 249, 225, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            animation: cardFloat 3s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .deck-card:nth-child(1) {
+            transform: translate(-5px, -5px) rotate(-2.5deg);
+            z-index: 1;
+            animation-delay: 0s;
+        }
+
+        .deck-card:nth-child(2) {
+            transform: translate(-2.5px, -2.5px) rotate(-1.2deg);
+            z-index: 2;
+            animation-delay: 0.5s;
+        }
+
+        .deck-card:nth-child(3) {
+            transform: translate(0, 0) rotate(0deg);
+            z-index: 3;
+            animation-delay: 1s;
+            filter: drop-shadow(0 0 30px rgba(229, 208, 172, 1));
+        }
+
+        .deck-instruction {
+            font-size: clamp(16px, 3.8vw, 20px);
+            color: #E5D0AC;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(229, 208, 172, 1);
+            margin-bottom: 18px;
+            animation: pulseText 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Card reveal - COMPACT FIT IN ONE SCREEN */
+        .card-reveal-container {
+            width: 100%;
+            max-width: 450px;
+            height: fit-content;
+            max-height: 88vh;
+            overflow-y: auto;
             z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .christmas-icon {
-            font-size: clamp(60px, 15vw, 80px);
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-size: clamp(18px, 4vw, 24px);
-            color: #6D2323;
-            margin-bottom: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: clamp(15px, 3vw, 20px);
-            font-size: clamp(16px, 3.5vw, 20px);
-            border: 3px solid #E5D0AC;
-            border-radius: 12px;
-            font-family: 'Georgia', serif;
-            color: #6D2323;
-            background: #FEF9E1;
-            text-align: center;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #A31D1D;
-        }
-
-        textarea {
-            width: 100%;
-            padding: clamp(15px, 3vw, 20px);
-            font-size: clamp(14px, 3vw, 18px);
-            border: 3px solid #E5D0AC;
-            border-radius: 12px;
-            font-family: 'Georgia', serif;
-            color: #6D2323;
-            background: #FEF9E1;
-            resize: none;
-            height: 150px;
-            line-height: 1.5;
-            transition: border-color 0.3s;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #A31D1D;
-        }
-
-        .btn {
-            width: 100%;
+        .card-frame {
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.98), rgba(229, 208, 172, 0.98));
             padding: clamp(15px, 3.5vw, 20px);
-            font-size: clamp(16px, 3.5vw, 20px);
-            background: linear-gradient(135deg, #A31D1D, #6D2323);
-            color: #FEF9E1;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 20px;
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Page 2: Card Selection */
-        .instruction {
-            font-size: clamp(16px, 3.5vw, 20px);
-            color: #6D2323;
-            text-align: center;
-            margin-bottom: 30px;
-            background: white;
-            padding: clamp(20px, 4vw, 30px);
-            border-radius: 15px;
-            border: 3px solid #E5D0AC;
-            max-width: 500px;
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: clamp(15px, 3vw, 25px);
-            margin-bottom: 20px;
-            max-width: 400px;
-        }
-
-        .tarot-card {
-            width: 100%;
-            aspect-ratio: 2/3;
-            background: linear-gradient(135deg, #6D2323, #A31D1D);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            position: relative;
+            border-radius: 25px;
+            box-shadow: 
+                0 0 60px rgba(229, 208, 172, 0.8),
+                inset 0 0 80px rgba(254, 249, 225, 0.3),
+                0 25px 80px rgba(0, 0, 0, 0.4);
             border: 4px solid #E5D0AC;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .tarot-card:active {
-            transform: scale(0.95);
-        }
-
-        .tarot-card::before {
-            content: '✨';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(40px, 10vw, 60px);
-            color: #FEF9E1;
-        }
-
-        /* Page 3: Card Result */
-        .card-reveal {
-            background: white;
-            padding: clamp(25px, 5vw, 35px);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(163, 29, 29, 0.2);
-            border: 3px solid #E5D0AC;
-            max-width: 500px;
+            position: relative;
+            animation: revealPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             width: 100%;
+        }
+
+        @keyframes revealPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotateY(180deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        /* Ornamental corners */
+        .card-frame::before,
+        .card-frame::after {
+            content: '✦';
+            position: absolute;
+            font-size: clamp(25px, 6vw, 35px);
+            color: #A31D1D;
+            animation: cornerSpin 4s linear infinite;
+        }
+
+        .card-frame::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .card-frame::after {
+            bottom: 10px;
+            right: 10px;
+            animation-direction: reverse;
+        }
+
+        @keyframes cornerSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .card-reveal-top {
             text-align: center;
-            max-height: 90vh;
-            overflow-y: auto;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #E5D0AC;
+        }
+
+        .reveal-title {
+            font-size: clamp(14px, 3.3vw, 18px);
+            background: linear-gradient(45deg, #A31D1D, #6D2323, #A31D1D);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            margin-bottom: 5px;
+            animation: shimmerBright 2s linear infinite;
+        }
+
+        .reveal-user-info {
+            font-size: clamp(11px, 2.5vw, 13px);
+            color: #6D2323;
+            font-style: italic;
+            font-weight: 600;
         }
 
         .card-image {
-            font-size: clamp(70px, 15vw, 100px);
-            margin-bottom: 15px;
+            font-size: clamp(55px, 13vw, 75px);
+            margin: 10px 0;
+            animation: imageSpinIn 1s ease;
+            filter: drop-shadow(0 0 30px rgba(229, 208, 172, 1));
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .card-image:hover {
+            transform: scale(1.15) rotate(15deg);
+        }
+
+        @keyframes imageSpinIn {
+            0% { transform: scale(0) rotate(-360deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
         .card-name {
-            font-size: clamp(28px, 6vw, 38px);
-            color: #A31D1D;
-            margin-bottom: 15px;
+            font-size: clamp(18px, 4.2vw, 24px);
+            background: linear-gradient(45deg, #A31D1D, #E5D0AC, #6D2323, #A31D1D);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
             font-weight: bold;
+            animation: shimmerRainbow 3s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(229, 208, 172, 0.5));
+        }
+
+        @keyframes shimmerRainbow {
+            to { background-position: 300% center; }
+        }
+
+        .section-divider {
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E5D0AC, #A31D1D, #E5D0AC, transparent);
+            margin: 10px auto;
+            border-radius: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(12px, 2.8vw, 15px);
+            background: linear-gradient(45deg, #A31D1D, #6D2323, #A31D1D);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            margin: 8px 0 6px;
+            animation: shimmerBright 2s linear infinite;
+        }
+
+        .card-prediction, .card-prediction-thai {
+            font-size: clamp(10px, 2.3vw, 12px);
+            color: #6D2323;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .card-prediction {
-            font-size: clamp(14px, 3vw, 18px);
-            color: #6D2323;
-            line-height: 1.6;
-            margin-bottom: 20px;
             font-style: italic;
         }
 
+        .human-design-section {
+            background: linear-gradient(135deg, rgba(229, 208, 172, 0.35), rgba(163, 29, 29, 0.2));
+            padding: clamp(10px, 2.5vw, 14px);
+            border-radius: 18px;
+            border: 2px solid #E5D0AC;
+            margin: 10px 0;
+            box-shadow: 
+                0 0 25px rgba(229, 208, 172, 0.3),
+                inset 0 0 30px rgba(254, 249, 225, 0.2);
+        }
+
+        .design-item {
+            font-size: clamp(9px, 2.1vw, 11px);
+            color: #6D2323;
+            margin: 5px 0;
+            text-align: left;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .design-item::before {
+            content: '⭐';
+            position: absolute;
+            left: 0;
+            font-size: 11px;
+            animation: starRotate 2s linear infinite;
+        }
+
+        @keyframes starRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .christmas-wish {
-            background: #FEF9E1;
-            padding: clamp(20px, 4vw, 25px);
-            border-radius: 15px;
-            border: 3px solid #A31D1D;
-            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(163, 29, 29, 0.22), rgba(109, 35, 35, 0.22));
+            padding: clamp(12px, 3vw, 16px);
+            border-radius: 18px;
+            border: 2px solid #A31D1D;
+            margin-top: 10px;
+            box-shadow: 
+                0 0 25px rgba(163, 29, 29, 0.3),
+                inset 0 0 30px rgba(254, 249, 225, 0.15);
         }
 
         .wish-label {
-            font-size: clamp(14px, 3vw, 18px);
+            font-size: clamp(11px, 2.6vw, 14px);
             color: #A31D1D;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
         .wish-text {
-            font-size: clamp(14px, 3vw, 18px);
+            font-size: clamp(10px, 2.3vw, 12px);
             color: #6D2323;
             line-height: 1.5;
             font-style: italic;
+            font-weight: 600;
         }
 
         .wish-signature {
-            font-size: clamp(14px, 3vw, 16px);
+            font-size: clamp(10px, 2.3vw, 12px);
             color: #A31D1D;
-            margin-top: 12px;
+            margin-top: 7px;
             font-family: 'Brush Script MT', cursive;
             text-align: right;
-        }
-
-        /* Page 5: Final */
-        .thank-you-box {
-            background: white;
-            padding: clamp(30px, 6vw, 45px);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(163, 29, 29, 0.2);
-            border: 3px solid #E5D0AC;
-            text-align: center;
-            max-width: 500px;
-        }
-
-        .thank-you-icon {
-            font-size: clamp(70px, 15vw, 100px);
-            margin-bottom: 20px;
-        }
-
-        .thank-you-text {
-            font-size: clamp(32px, 7vw, 42px);
-            color: #A31D1D;
-            margin-bottom: 15px;
             font-weight: bold;
         }
 
-        .thank-you-message {
-            font-size: clamp(14px, 3vw, 18px);
+        .card-footer {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 2px dashed #E5D0AC;
+            text-align: center;
+            font-size: clamp(9px, 2.1vw, 11px);
+            color: #6D2323;
+            font-style: italic;
+        }
+
+        /* Dice rolling section */
+        .dice-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .dice {
+            width: clamp(70px, 16vw, 90px);
+            height: clamp(70px, 16vw, 90px);
+            background: linear-gradient(135deg, #FEF9E1, #E5D0AC);
+            border: 4px solid #A31D1D;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(35px, 8vw, 50px);
+            font-weight: bold;
+            color: #6D2323;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(229, 208, 172, 0.5),
+                inset 0 0 30px rgba(254, 249, 225, 0.5);
+            margin-bottom: 15px;
+            animation: diceFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes diceFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .dice:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .dice:active {
+            transform: scale(0.95);
+        }
+
+        .dice.rolling {
+            animation: diceRoll 0.5s ease-in-out;
+        }
+
+        @keyframes diceRoll {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.2); }
+            50% { transform: rotate(180deg) scale(0.9); }
+            75% { transform: rotate(270deg) scale(1.1); }
+        }
+
+        .dice-instruction {
+            font-size: clamp(13px, 3vw, 16px);
+            color: #FEF9E1;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(254, 249, 225, 0.8);
+        }
+
+        .lucky-numbers {
+            background: linear-gradient(135deg, rgba(163, 29, 29, 0.3), rgba(229, 208, 172, 0.3));
+            padding: clamp(12px, 3vw, 16px);
+            border-radius: 18px;
+            border: 3px solid #E5D0AC;
+            margin-top: 12px;
+            text-align: center;
+            box-shadow: 
+                0 0 30px rgba(229, 208, 172, 0.5),
+                inset 0 0 30px rgba(254, 249, 225, 0.2);
+            width: 100%;
+        }
+
+        .lucky-numbers-title {
+            font-size: clamp(13px, 3vw, 16px);
+            color: #A31D1D;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .lucky-numbers-display {
+            font-size: clamp(20px, 4.8vw, 28px);
+            color: #6D2323;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 8px 0;
+            text-shadow: 0 0 10px rgba(229, 208, 172, 0.5);
+        }
+
+        .lucky-numbers-hint {
+            font-size: clamp(9px, 2.1vw, 11px);
+            color: #6D2323;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        /* DM section */
+        .dm-section {
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.98), rgba(229, 208, 172, 0.98));
+            padding: clamp(22px, 5vw, 30px);
+            border-radius: 25px;
+            box-shadow: 
+                0 0 60px rgba(229, 208, 172, 0.8),
+                inset 0 0 80px rgba(254, 249, 225, 0.3),
+                0 25px 80px rgba(0, 0, 0, 0.4);
+            border: 4px solid #E5D0AC;
+            text-align: center;
+            max-width: 450px;
+            animation: dmPop 1s ease;
+            backdrop-filter: blur(15px);
+            z-index: 2;
+        }
+
+        @keyframes dmPop {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(2deg); }
+            50% { transform: scale(0.95) rotate(-2deg); }
+            75% { transform: scale(1.02) rotate(1deg); }
+        }
+
+        .dm-icon {
+            font-size: clamp(60px, 14vw, 85px);
+            margin-bottom: 15px;
+            animation: dmBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(229, 208, 172, 1));
+        }
+
+        @keyframes dmBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.1); }
+        }
+
+        .dm-title {
+            font-size: clamp(24px, 5.8vw, 36px);
+            background: linear-gradient(45deg, #A31D1D, #E5D0AC, #6D2323, #A31D1D);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: bold;
+            animation: shimmerRainbow 3s linear infinite;
+        }
+
+        .dm-message {
+            font-size: clamp(13px, 3vw, 16px);
+            color: #6D2323;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .dm-notice {
+            background: linear-gradient(135deg, rgba(163, 29, 29, 0.2), rgba(229, 208, 172, 0.3));
+            padding: clamp(15px, 3.5vw, 20px);
+            border-radius: 20px;
+            border: 3px solid #A31D1D;
+            margin: 18px 0;
+            box-shadow: 0 0 35px rgba(163, 29, 29, 0.3);
+        }
+
+        .dm-notice-title {
+            font-size: clamp(14px, 3.3vw, 18px);
+            color: #A31D1D;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .dm-notice-text {
+            font-size: clamp(11px, 2.5vw, 13px);
             color: #6D2323;
             line-height: 1.6;
-            margin-bottom: 20px;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         /* Floating button */
@@ -340,20 +984,32 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: clamp(60px, 15vw, 80px);
-            height: clamp(60px, 15vw, 80px);
+            width: clamp(60px, 15vw, 75px);
+            height: clamp(60px, 15vw, 75px);
             background: linear-gradient(135deg, #A31D1D, #6D2323);
             color: #FEF9E1;
             border: 4px solid #E5D0AC;
             border-radius: 50%;
-            font-size: clamp(30px, 7vw, 40px);
+            font-size: clamp(28px, 7vw, 38px);
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(163, 29, 29, 0.4);
-            transition: transform 0.3s;
+            box-shadow: 
+                0 10px 35px rgba(163, 29, 29, 0.6),
+                0 0 50px rgba(229, 208, 172, 0.8);
+            transition: all 0.3s ease;
             z-index: 1000;
             display: none;
             align-items: center;
             justify-content: center;
+            animation: floatingBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes floatingBounce {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+            }
+            50% { 
+                transform: translateY(-12px) scale(1.08);
+            }
         }
 
         .floating-btn:active {
@@ -373,206 +1029,320 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            backdrop-filter: blur(10px);
         }
 
         .modal.active {
             display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
-            background: #FEF9E1;
-            padding: clamp(25px, 5vw, 40px);
-            border-radius: 20px;
-            max-width: 500px;
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.98), rgba(229, 208, 172, 0.98));
+            padding: clamp(20px, 4.5vw, 28px);
+            border-radius: 25px;
+            max-width: 450px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
             border: 4px solid #E5D0AC;
+            box-shadow: 
+                0 0 70px rgba(229, 208, 172, 0.9),
+                inset 0 0 80px rgba(254, 249, 225, 0.3);
+            animation: modalBounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes modalBounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #E5D0AC;
         }
 
         .modal-title {
-            font-size: clamp(24px, 5vw, 32px);
-            color: #A31D1D;
+            font-size: clamp(20px, 4.8vw, 28px);
+            background: linear-gradient(45deg, #A31D1D, #E5D0AC, #A31D1D);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: bold;
+            animation: shimmerBright 2s linear infinite;
         }
 
         .close-btn {
-            font-size: clamp(32px, 7vw, 40px);
-            color: #6D2323;
+            font-size: clamp(30px, 7vw, 38px);
+            color: #A31D1D;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: none;
             background: transparent;
             line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2) rotate(90deg);
+        }
+
+        .close-btn:active {
+            transform: scale(0.9) rotate(-90deg);
         }
 
         .wishes-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 14px;
         }
 
         .wish-item {
-            background: white;
-            padding: clamp(20px, 4vw, 25px);
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(229, 208, 172, 0.3), rgba(163, 29, 29, 0.2));
+            padding: clamp(14px, 3.5vw, 20px);
+            border-radius: 18px;
             border: 3px solid #E5D0AC;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(229, 208, 172, 0.3);
+            transition: all 0.3s;
+        }
+
+        .wish-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(229, 208, 172, 0.6);
         }
 
         .wish-item-name {
-            font-size: clamp(16px, 3.5vw, 20px);
+            font-size: clamp(13px, 3vw, 16px);
             color: #A31D1D;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .wish-item-text {
-            font-size: clamp(14px, 3vw, 16px);
+            font-size: clamp(11px, 2.5vw, 13px);
             color: #6D2323;
             line-height: 1.5;
             font-style: italic;
+            font-weight: 600;
         }
 
         .no-wishes {
             text-align: center;
-            font-size: clamp(16px, 3.5vw, 20px);
+            font-size: clamp(14px, 3.2vw, 17px);
             color: #6D2323;
-            padding: 40px 20px;
+            padding: 30px 14px;
             font-style: italic;
-        }
-
-        /* Decorations */
-        .decoration {
-            position: absolute;
-            font-size: clamp(30px, 6vw, 45px);
-            opacity: 0.4;
-            animation: float 3s ease-in-out infinite;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-15px) rotate(10deg);
-            }
+            font-weight: 600;
         }
 
         /* Scrollbar styling */
-        .card-reveal::-webkit-scrollbar,
+        .card-reveal-container::-webkit-scrollbar,
         .modal-content::-webkit-scrollbar {
             width: 6px;
         }
 
-        .card-reveal::-webkit-scrollbar-track,
+        .card-reveal-container::-webkit-scrollbar-track,
         .modal-content::-webkit-scrollbar-track {
-            background: #FEF9E1;
+            background: rgba(229, 208, 172, 0.2);
+            border-radius: 3px;
         }
 
-        .card-reveal::-webkit-scrollbar-thumb,
+        .card-reveal-container::-webkit-scrollbar-thumb,
         .modal-content::-webkit-scrollbar-thumb {
-            background: #E5D0AC;
+            background: linear-gradient(135deg, #A31D1D, #E5D0AC);
             border-radius: 3px;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(720deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Page 1: Name Input -->
+        <!-- Christmas Lights Border -->
+        <div class="christmas-lights" id="lightsContainer"></div>
+
+        <!-- Page 1: Name & Birthday Input -->
         <div class="page active" id="page1">
             <div class="page-header">
-                <h1>🎄 Christmas Tarot 2025 🎄</h1>
-                <p>Discover Your Fortune</p>
-                <p class="from">✨ From Thimabhorn K. ✨</p>
+                <h1>🎄 Christmas Tarot 2026 🎄</h1>
+                <p>Discover Your Magical Destiny</p>
+                <p class="from">✨ From Thimabhorn K. (เบียร์) ✨</p>
             </div>
             <div class="content-box">
-                <div class="christmas-icon">🎅</div>
-                <label for="userName">What's your name?</label>
-                <input type="text" id="userName" placeholder="Enter your name...">
-                <button class="btn" onclick="goToCardSelection()">Continue ➜</button>
+                <div class="christmas-icon" onclick="this.style.transform='scale(1.5) rotate(360deg)'">🎅</div>
+                <div class="form-row">
+                    <label for="userName">What's your name? 🌟</label>
+                    <input type="text" id="userName" placeholder="Enter your magical name...">
+                </div>
+                <div class="form-row">
+                    <label for="userBirthday">When were you born? 🎂</label>
+                    <input type="text" id="userBirthday" placeholder="e.g. January 15, 2000">
+                    <div class="input-hint">✨ Type your birth date ✨</div>
+                </div>
+                <button class="btn" onclick="goToCardSelection()">
+                    <span style="position: relative; z-index: 1;">🎁 Enter Magic Realm 🎁</span>
+                </button>
             </div>
-            <div class="decoration" style="top: 8%; left: 5%;">⭐</div>
-            <div class="decoration" style="top: 12%; right: 8%;">✨</div>
-            <div class="decoration" style="bottom: 15%; left: 10%;">🎄</div>
-            <div class="decoration" style="bottom: 10%; right: 5%;">🎁</div>
         </div>
 
         <!-- Page 2: Card Selection -->
         <div class="page" id="page2">
             <div class="page-header">
-                <h1>🔮 Choose Your Card 🔮</h1>
-                <p>Pick one that calls to you</p>
+                <h1>🔮 Choose Your Destiny 🔮</h1>
+                <p>The cards are calling you...</p>
             </div>
-            <div class="instruction">
-                <span id="userNameDisplay"></span>, select your fortune card...
+            <div class="fortune-room">
+                <div class="crystal-ball" onclick="this.style.transform='scale(1.3) rotate(360deg)'"></div>
+                <div class="instruction">
+                    🌟 <span id="userNameDisplay"></span>, born on <span id="birthdayDisplay"></span>... 
+                    <br>Close your eyes, make a wish, and tap the magical deck! ✨
+                </div>
+                <div class="deck-instruction">✨ TAP THE MAGIC DECK ✨</div>
+                <div class="card-deck" onclick="drawCard()">
+                    <div class="deck-card">🌟</div>
+                    <div class="deck-card">✨</div>
+                    <div class="deck-card">⭐</div>
+                </div>
             </div>
-            <div class="cards-container">
-                <div class="tarot-card" onclick="selectCard(0)"></div>
-                <div class="tarot-card" onclick="selectCard(1)"></div>
-                <div class="tarot-card" onclick="selectCard(2)"></div>
-                <div class="tarot-card" onclick="selectCard(3)"></div>
-            </div>
-            <div class="decoration" style="top: 5%; left: 3%;">🌟</div>
-            <div class="decoration" style="top: 8%; right: 5%;">✨</div>
-            <div class="decoration" style="bottom: 10%; left: 7%;">🎄</div>
-            <div class="decoration" style="bottom: 8%; right: 4%;">❄️</div>
         </div>
 
-        <!-- Page 3: Card Result -->
+        <!-- Page 3: Card Result - FIT IN ONE SCREEN -->
         <div class="page" id="page3">
-            <div class="card-reveal">
-                <div class="card-image" id="cardEmoji"></div>
-                <div class="card-name" id="cardName"></div>
-                <div class="card-prediction" id="cardPrediction"></div>
-                
-                <div class="christmas-wish">
-                    <div class="wish-label">🎄 From Thimabhorn K. 🎄</div>
-                    <div class="wish-text" id="christmasWishText"></div>
-                    <div class="wish-signature">- Thimabhorn K.</div>
+            <div class="card-reveal-container">
+                <div class="card-frame">
+                    <!-- Top section -->
+                    <div class="card-reveal-top">
+                        <div class="reveal-title">🎄 Christmas Fortune 2026 🎄</div>
+                        <div class="reveal-user-info"><span id="displayUserName"></span> • <span id="displayUserBirthday"></span></div>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-image" id="cardEmoji" onclick="this.style.transform='scale(1.3) rotate(360deg)'"></div>
+                    <div class="card-name" id="cardName"></div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <div class="section-title">✨ Fortune ✨</div>
+                    <div class="card-prediction" id="cardPrediction"></div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <div class="section-title">🌟 คำทำนาย 🌟</div>
+                    <div class="card-prediction-thai" id="cardPredictionThai"></div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <div class="human-design-section">
+                        <div class="section-title">🔮 Soul Blueprint</div>
+                        <div id="humanDesignContent"></div>
+                    </div>
+                    
+                    <div class="christmas-wish">
+                        <div class="wish-label">🎄 From Beer 🍺</div>
+                        <div class="wish-text" id="christmasWishText"></div>
+                        <div class="wish-signature">- Thimabhorn K. 💝</div>
+                    </div>
+
+                    <!-- Footer branding -->
+                    <div class="card-footer">
+                        ✨ Christmas Tarot 2026 by Thimabhorn K. ✨
+                    </div>
                 </div>
 
-                <button class="btn" onclick="goToWishInput()">Send Wishes Back ➜</button>
+                <button class="btn" onclick="goToDiceRoll()" style="margin-top: 15px;">
+                    <span style="position: relative; z-index: 1;">🎲 Get Lucky Number 🎲</span>
+                </button>
             </div>
         </div>
 
-        <!-- Page 4: User Wish Input -->
+        <!-- Page 4: Dice Roll -->
         <div class="page" id="page4">
             <div class="page-header">
-                <h1>💝 Your Turn 💝</h1>
-                <p>Send wishes to Thimabhorn K.</p>
+                <h1>🎲 Lucky Numbers 🎲</h1>
+                <p>Roll for your fortune!</p>
             </div>
             <div class="content-box">
-                <div class="christmas-icon">💌</div>
-                <label for="userWish">Your Wishes</label>
-                <textarea id="userWish" placeholder="Write your heartfelt wishes..."></textarea>
-                <button class="btn" onclick="submitWish()">Send Wishes ✨</button>
+                <div class="dice-container">
+                    <div class="dice-instruction">🎰 Tap to Roll the Magic Dice! 🎰</div>
+                    <div class="dice" id="dice" onclick="rollDice()">🎲</div>
+                    <div class="lucky-numbers" id="luckyNumbersDisplay" style="display: none;">
+                        <div class="lucky-numbers-title">✨ Your Lucky Numbers ✨</div>
+                        <div class="lucky-numbers-display" id="numbersResult"></div>
+                        <div class="lucky-numbers-hint">🎊 This could be your winning lottery number! 🎊</div>
+                    </div>
+                </div>
+                <button class="btn" onclick="goToDMPage()" id="continueBtn" style="display: none;">
+                    <span style="position: relative; z-index: 1;">💝 Send Wishes 💝</span>
+                </button>
             </div>
         </div>
 
-        <!-- Page 5: Thank You -->
+        <!-- Page 5: Instagram DM Invitation -->
         <div class="page" id="page5">
-            <div class="thank-you-box">
-                <div class="thank-you-icon">🎉</div>
-                <div class="thank-you-text">Thank You!</div>
-                <div class="thank-you-message">
-                    Your wishes have been received with gratitude. May Christmas fill your heart with joy! ✨
+            <div class="dm-section">
+                <div class="dm-icon">💌</div>
+                <div class="dm-title">Send Your Wishes! 💝</div>
+                <div class="dm-message">
+                    I'd love to hear from you! 🎄✨
                 </div>
-                <div class="christmas-icon">🎄⛄🎅🎁❄️</div>
-                <button class="btn" onclick="startOver()">Start Over 🔄</button>
+                
+                <div class="dm-notice">
+                    <div class="dm-notice-title">📱 How to Send Wishes</div>
+                    <div class="dm-notice-text">
+                        <strong>EN:</strong> Please DM me on Instagram! The app isn't finished yet, so I can't receive messages here. Let's chat directly! 💝
+                    </div>
+                    <div class="dm-notice-text">
+                        <strong>TH:</strong> เบียร์ยังทำแอพไม่เสร็จ เลยจะไม่ได้รับข้อความ ดังนั้นทัก DM Instagram มาจะดีกว่านะคะ! อิอิ ขออภัย จุ๊บๆ 💋✨
+                    </div>
+                </div>
+                
+                <div class="christmas-icon">🎄⛄🎅🎁❄️✨💫</div>
+                
+                <button class="btn" onclick="startOver()">
+                    <span style="position: relative; z-index: 1;">🔄 Play Again 🔄</span>
+                </button>
             </div>
         </div>
     </div>
@@ -586,7 +1356,7 @@
     <div class="modal" id="wishesModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">💝 All Wishes</h2>
+                <h2 class="modal-title">💝 Magical Wishes 💝</h2>
                 <button class="close-btn" onclick="closeWishesModal()">×</button>
             </div>
             <div class="wishes-list" id="wishesList"></div>
@@ -594,74 +1364,200 @@
     </div>
 
     <script>
-        // Tarot cards data
+        // Tarot cards for 2026
         const tarotCards = [
             {
                 name: "The Star",
+                nameThai: "ดาวแห่งความหวัง",
                 emoji: "⭐",
-                prediction: "Hope and renewal await you in 2025! Your dreams will guide you toward success. Trust in yourself and embrace new opportunities with open arms.",
-                wish: "May your path be illuminated with hope and your dreams turn into beautiful realities. Believe in the magic within you! ✨"
+                prediction: "Hope shines in 2026! Dreams guide success. Trust yourself, embrace opportunities.",
+                predictionThai: "ความหวังส่องสว่างในปี 2026 ความฝันนำทางสู่ความสำเร็จ เชื่อมั่นตัวเองและโอบรับโอกาส",
+                wish: "May your dreams become reality! ✨",
+                humanDesign: {
+                    type: "Manifesting Generator",
+                    strategy: "Multi-passionate creator",
+                    bestFor: ["Innovation", "Creative Projects"],
+                    zodiacConnection: "Aquarius - visionary"
+                }
             },
             {
                 name: "The Sun",
+                nameThai: "ดวงอาทิตย์",
                 emoji: "☀️",
-                prediction: "Joy and abundance shine upon you! 2025 brings warmth, success, and happiness to all aspects of your life. Celebrate every moment!",
-                wish: "Wishing you endless sunshine, laughter, and prosperity. May every day sparkle with joy and wonderful surprises! 🌟"
+                prediction: "Radiant joy fills 2026! Success illuminates your life. Shine brilliantly this year.",
+                predictionThai: "ความสุขเจิดจรัสในปี 2026 ความสำเร็จส่องสว่างชีวิต นี่คือปีที่เปล่งประกาย",
+                wish: "May sunshine surround you! 🌟",
+                humanDesign: {
+                    type: "Pure Generator",
+                    strategy: "Abundance attractor",
+                    bestFor: ["Leadership", "Teaching"],
+                    zodiacConnection: "Leo - confident"
+                }
             },
             {
                 name: "The World",
+                nameThai: "โลกแห่งความสำเร็จ",
                 emoji: "🌍",
-                prediction: "Completion and achievement are yours! You'll reach important milestones and find harmony in 2025. The world is truly yours to explore!",
-                wish: "May you conquer your goals and discover new horizons. Your journey will be filled with accomplishments and beautiful adventures! 🎊"
+                prediction: "Achievement is yours in 2026! Reach milestones, explore horizons.",
+                predictionThai: "ความสำเร็จของคุณในปี 2026 บรรลุเป้าหมายและสำรวจขอบฟ้าใหม่",
+                wish: "May you conquer every summit! 🎊",
+                humanDesign: {
+                    type: "Manifestor",
+                    strategy: "Trailblazer",
+                    bestFor: ["Travel", "Business"],
+                    zodiacConnection: "Sagittarius - adventurous"
+                }
             },
             {
                 name: "The Lovers",
+                nameThai: "คู่รักแห่งความผูกพัน",
                 emoji: "💕",
-                prediction: "Love and meaningful connections blossom in 2025! Whether romance or friendship, deep bonds will bring you immense happiness and support.",
-                wish: "May love surround you always, and may you find harmony in all relationships. Your heart will overflow with warmth and affection! 💖"
+                prediction: "Love blossoms in 2026! Deep connections bring joy. Your heart is sanctuary.",
+                predictionThai: "ความรักเบ่งบานในปี 2026 ความสัมพันธ์ลึกซึ้งนำความสุข หัวใจเป็นที่ศักดิ์สิทธิ์",
+                wish: "May love surround you! 💖",
+                humanDesign: {
+                    type: "Projector",
+                    strategy: "Relationship guide",
+                    bestFor: ["Counseling", "Collaboration"],
+                    zodiacConnection: "Libra - balanced"
+                }
             },
             {
                 name: "Wheel of Fortune",
+                nameThai: "วงล้อแห่งโชคชะตา",
                 emoji: "🎡",
-                prediction: "Good fortune spins your way! Positive changes and lucky opportunities will come unexpectedly in 2025. Embrace the exciting turns ahead!",
-                wish: "May luck be your constant companion and destiny smile upon you. Get ready for wonderful surprises and favorable winds! 🍀"
+                prediction: "Lucky changes in 2026! Fortune favors you. Embrace transformations.",
+                predictionThai: "การเปลี่ยนแปลงโชคดีในปี 2026 โชคชะตาเข้าข้างคุณ โอบรับการเปลี่ยนแปลง",
+                wish: "May luck dance with you! 🍀",
+                humanDesign: {
+                    type: "Reflector",
+                    strategy: "Universal timing",
+                    bestFor: ["Investment", "Planning"],
+                    zodiacConnection: "Pisces - intuitive"
+                }
             },
             {
                 name: "The Magician",
+                nameThai: "นักเวทย์แห่งพลัง",
                 emoji: "🎩",
-                prediction: "Your talents and skills will manifest into reality! 2025 empowers you to create, innovate, and transform your visions into achievements.",
-                wish: "May you harness your inner power and create miracles. Your potential is limitless, and magic flows through everything you do! ✨"
+                prediction: "Talents manifest in 2026! Transform visions to reality. Create miracles.",
+                predictionThai: "พรสวรรค์เป็นเวทมนตร์ในปี 2026 เปลี่ยนวิสัยทัศน์เป็นจริง สร้างปาฏิหาริย์",
+                wish: "May you weave miracles! ✨",
+                humanDesign: {
+                    type: "Manifesting Generator",
+                    strategy: "Rapid manifestation",
+                    bestFor: ["Technology", "Arts"],
+                    zodiacConnection: "Gemini - versatile"
+                }
             },
             {
                 name: "Strength",
+                nameThai: "พลังแห่งความกล้าหาญ",
                 emoji: "🦁",
-                prediction: "Inner courage and resilience define your 2025! You'll overcome challenges with grace and emerge stronger, braver, and more confident than ever.",
-                wish: "May you find strength in every challenge and courage in every step. You are powerful beyond measure! 💪"
+                prediction: "Inner courage defines 2026! Overcome with grace. Emerge stronger, wiser.",
+                predictionThai: "ความกล้าหาญกำหนดปี 2026 ฝ่าฟันด้วยสง่างาม ออกมาแข็งแกร่งและฉลาด",
+                wish: "May you find strength! 💪",
+                humanDesign: {
+                    type: "Generator (Enduring)",
+                    strategy: "Sustained resilience",
+                    bestFor: ["Fitness", "Coaching"],
+                    zodiacConnection: "Taurus - steadfast"
+                }
             },
             {
                 name: "The Empress",
+                nameThai: "จักรพรรดินี",
                 emoji: "👑",
-                prediction: "Abundance and creativity flourish in your life! 2025 brings growth, nurturing energy, and the birth of beautiful new projects and ideas.",
-                wish: "May prosperity and beauty surround you. Your creative spirit will bloom and bring forth magnificent creations! 🌺"
+                prediction: "Abundance in 2026! Creativity blooms, prosperity flows. Nurture growth.",
+                predictionThai: "ความอุดมสมบูรณ์ในปี 2026 ความคิดสร้างสรรค์บาน ความเจริญไหล เลี้ยงดูการเติบโต",
+                wish: "May prosperity embrace you! 🌺",
+                humanDesign: {
+                    type: "Generator (Nurturing)",
+                    strategy: "Abundance bringer",
+                    bestFor: ["Arts", "Hospitality"],
+                    zodiacConnection: "Cancer - nurturing"
+                }
             }
         ];
 
-        let currentUser = { name: '', selectedCard: null, wish: '' };
+        let currentUser = { 
+            name: '', 
+            birthday: '',
+            selectedCard: null,
+            luckyNumbers: []
+        };
         let allWishes = JSON.parse(localStorage.getItem('christmasWishes')) || [];
 
-        // Create snowflakes
-        function createSnowflakes() {
+        // Create Christmas particles
+        function createParticles() {
             const container = document.querySelector('.container');
-            const snowflakeSymbols = ['❄', '❅', '❆'];
+            const snowSymbols = ['❄', '❅', '❆', '✻', '✼', '❄️'];
             
-            for (let i = 0; i < 12; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.className = 'snowflake';
-                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
-                snowflake.style.left = Math.random() * 100 + '%';
-                snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                snowflake.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(snowflake);
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = snowSymbols[Math.floor(Math.random() * snowSymbols.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Create twinkling stars
+        function createStars() {
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Create Christmas lights
+        function createChristmasLights() {
+            const lightsContainer = document.getElementById('lightsContainer');
+            const colors = ['#A31D1D', '#E5D0AC', '#FEF9E1', '#6D2323'];
+            const numLights = 20;
+            
+            for (let i = 0; i < numLights; i++) {
+                const light = document.createElement('div');
+                light.className = 'light';
+                light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                light.style.left = (i / numLights * 100) + '%';
+                light.style.top = '10px';
+                light.style.animationDelay = (i * 0.1) + 's';
+                lightsContainer.appendChild(light);
+            }
+            
+            for (let i = 0; i < numLights; i++) {
+                const light = document.createElement('div');
+                light.className = 'light';
+                light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                light.style.left = (i / numLights * 100) + '%';
+                light.style.bottom = '10px';
+                light.style.animationDelay = (i * 0.1 + 0.5) + 's';
+                lightsContainer.appendChild(light);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.querySelector('.container');
+            const colors = ['#FEF9E1', '#E5D0AC', '#A31D1D', '#6D2323'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(confetti);
             }
         }
 
@@ -670,59 +1566,130 @@
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+            
+            if (pageId === 'page4') {
+                // Reset dice display
+                document.getElementById('luckyNumbersDisplay').style.display = 'none';
+                document.getElementById('continueBtn').style.display = 'none';
+                document.getElementById('dice').textContent = '🎲';
+            }
+            
+            if (pageId === 'page5') {
+                createConfetti();
+            }
         }
 
         function goToCardSelection() {
             const userName = document.getElementById('userName').value.trim();
+            const birthday = document.getElementById('userBirthday').value.trim();
+            
             if (!userName) {
-                alert('Please enter your name! 😊');
+                alert('🔮 Please reveal your magical name...');
                 return;
             }
+            if (!birthday) {
+                alert('🔮 Please share your birth date...');
+                return;
+            }
+            
             currentUser.name = userName;
+            currentUser.birthday = birthday;
             document.getElementById('userNameDisplay').textContent = userName;
+            document.getElementById('birthdayDisplay').textContent = birthday;
             showPage('page2');
         }
 
-        function selectCard(index) {
+        function drawCard() {
             const randomCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
             currentUser.selectedCard = randomCard;
 
             setTimeout(() => {
+                // Display user info
+                document.getElementById('displayUserName').textContent = currentUser.name;
+                document.getElementById('displayUserBirthday').textContent = currentUser.birthday;
+
+                // Card info
                 document.getElementById('cardEmoji').textContent = randomCard.emoji;
-                document.getElementById('cardName').textContent = randomCard.name;
+                document.getElementById('cardName').textContent = `${randomCard.name} • ${randomCard.nameThai}`;
                 document.getElementById('cardPrediction').textContent = randomCard.prediction;
+                document.getElementById('cardPredictionThai').textContent = randomCard.predictionThai;
                 document.getElementById('christmasWishText').textContent = randomCard.wish;
+                
+                // Human Design - compact
+                const hdContent = document.getElementById('humanDesignContent');
+                hdContent.innerHTML = `
+                    <div class="design-item"><strong>Type:</strong> ${randomCard.humanDesign.type}</div>
+                    <div class="design-item"><strong>Strategy:</strong> ${randomCard.humanDesign.strategy}</div>
+                    <div class="design-item"><strong>Best For:</strong> ${randomCard.humanDesign.bestFor.join(', ')}</div>
+                    <div class="design-item"><strong>Energy:</strong> ${randomCard.humanDesign.zodiacConnection}</div>
+                `;
+                
                 showPage('page3');
-            }, 300);
+            }, 500);
         }
 
-        function goToWishInput() {
+        function goToDiceRoll() {
             showPage('page4');
         }
 
-        function submitWish() {
-            const wishText = document.getElementById('userWish').value.trim();
-            if (!wishText) {
-                alert('Please write your wishes! 💝');
-                return;
-            }
+        function rollDice() {
+            const dice = document.getElementById('dice');
+            const luckyDisplay = document.getElementById('luckyNumbersDisplay');
+            const continueBtn = document.getElementById('continueBtn');
+            
+            // Add rolling animation
+            dice.classList.add('rolling');
+            
+            // Simulate rolling
+            let rollCount = 0;
+            const rollInterval = setInterval(() => {
+                dice.textContent = Math.floor(Math.random() * 6) + 1;
+                rollCount++;
+                
+                if (rollCount > 10) {
+                    clearInterval(rollInterval);
+                    
+                    // Generate lucky numbers
+                    const luckyNums = [];
+                    for (let i = 0; i < 6; i++) {
+                        luckyNums.push(Math.floor(Math.random() * 99) + 1);
+                    }
+                    luckyNums.sort((a, b) => a - b);
+                    currentUser.luckyNumbers = luckyNums;
+                    
+                    // Display result
+                    document.getElementById('numbersResult').textContent = luckyNums.join(' • ');
+                    luckyDisplay.style.display = 'block';
+                    continueBtn.style.display = 'block';
+                    
+                    // Remove rolling class
+                    dice.classList.remove('rolling');
+                    
+                    // Save to localStorage
+                    allWishes.push({
+                        name: currentUser.name,
+                        birthday: currentUser.birthday,
+                        card: currentUser.selectedCard.name,
+                        luckyNumbers: luckyNums.join(', '),
+                        timestamp: new Date().toISOString()
+                    });
+                    localStorage.setItem('christmasWishes', JSON.stringify(allWishes));
+                    document.getElementById('floatingBtn').style.display = 'flex';
+                }
+            }, 100);
+        }
 
-            currentUser.wish = wishText;
-            allWishes.push({
-                name: currentUser.name,
-                wish: wishText,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('christmasWishes', JSON.stringify(allWishes));
-
+        function goToDMPage() {
             showPage('page5');
-            document.getElementById('floatingBtn').style.display = 'flex';
         }
 
         function startOver() {
             document.getElementById('userName').value = '';
-            document.getElementById('userWish').value = '';
-            currentUser = { name: '', selectedCard: null, wish: '' };
+            document.getElementById('userBirthday').value = '';
+            currentUser = { name: '', birthday: '', selectedCard: null, luckyNumbers: [] };
+            
+            document.querySelectorAll('.confetti').forEach(c => c.remove());
+            
             showPage('page1');
         }
 
@@ -733,14 +1700,14 @@
             wishesList.innerHTML = '';
 
             if (allWishes.length === 0) {
-                wishesList.innerHTML = '<div class="no-wishes">No wishes yet. Be the first! 🎄</div>';
+                wishesList.innerHTML = '<div class="no-wishes">The magical book awaits... 🎄✨</div>';
             } else {
                 allWishes.forEach(wish => {
                     const wishItem = document.createElement('div');
                     wishItem.className = 'wish-item';
                     wishItem.innerHTML = `
-                        <div class="wish-item-name">From: ${wish.name}</div>
-                        <div class="wish-item-text">"${wish.wish}"</div>
+                        <div class="wish-item-name">✨ ${wish.name} • ${wish.card}</div>
+                        <div class="wish-item-text">🎲 Lucky: ${wish.luckyNumbers || 'N/A'}</div>
                     `;
                     wishesList.appendChild(wishItem);
                 });
@@ -760,12 +1727,15 @@
         });
 
         // Initialize
-        createSnowflakes();
+        createParticles();
+        createStars();
+        createChristmasLights();
+        
         if (allWishes.length > 0) {
             document.getElementById('floatingBtn').style.display = 'flex';
         }
 
-        // Prevent pull-to-refresh on mobile
+        // Prevent pull-to-refresh
         let lastTouchY = 0;
         let preventPullToRefresh = false;
 
