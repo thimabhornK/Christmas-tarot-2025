@@ -44,6 +44,36 @@
             position: relative;
         }
 
+        /* Audio control */
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.9), rgba(229, 208, 172, 0.9));
+            border: 3px solid #E5D0AC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 0 30px rgba(229, 208, 172, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .audio-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(229, 208, 172, 0.9);
+        }
+
+        .audio-control svg {
+            width: 24px;
+            height: 24px;
+            fill: #A31D1D;
+        }
+
         /* Christmas gradient backgrounds */
         .page {
             width: 100%;
@@ -95,30 +125,32 @@
             display: flex;
         }
 
-        /* Christmas particles - Snow */
+        /* Elegant snow particles */
         .particle {
             position: absolute;
-            color: #E5D0AC;
-            font-size: clamp(15px, 4vw, 25px);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #E5D0AC, transparent);
+            border-radius: 50%;
             pointer-events: none;
             animation: fall linear infinite;
-            text-shadow: 0 0 10px rgba(229, 208, 172, 0.8);
+            opacity: 0.7;
             z-index: 1;
         }
 
         @keyframes fall {
             0% {
-                transform: translateY(-50px) rotate(0deg);
+                transform: translateY(-50px) translateX(0);
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.7;
             }
             90% {
-                opacity: 1;
+                opacity: 0.7;
             }
             100% {
-                transform: translateY(calc(100vh + 50px)) rotate(360deg);
+                transform: translateY(calc(100vh + 50px)) translateX(30px);
                 opacity: 0;
             }
         }
@@ -126,11 +158,11 @@
         /* Twinkling stars */
         .star {
             position: absolute;
-            width: 3px;
-            height: 3px;
+            width: 2px;
+            height: 2px;
             background: #E5D0AC;
             border-radius: 50%;
-            box-shadow: 0 0 10px #E5D0AC;
+            box-shadow: 0 0 8px #E5D0AC;
             animation: twinkle 2s ease-in-out infinite;
             pointer-events: none;
         }
@@ -140,7 +172,7 @@
             50% { opacity: 1; transform: scale(1.5); }
         }
 
-        /* Christmas lights border */
+        /* Elegant borders */
         .christmas-lights {
             position: absolute;
             top: 0;
@@ -153,78 +185,67 @@
 
         .light {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             animation: blink 1.5s infinite;
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 20px currentColor; }
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 15px currentColor; }
         }
 
         /* Page headers */
         .page-header {
             text-align: center;
             margin-bottom: 15px;
-            animation: bounceIn 1s ease;
+            animation: fadeInDown 1s ease;
             z-index: 2;
         }
 
-        @keyframes bounceIn {
-            0% {
+        @keyframes fadeInDown {
+            from {
                 opacity: 0;
-                transform: scale(0.3) rotate(-10deg);
+                transform: translateY(-30px);
             }
-            50% {
+            to {
                 opacity: 1;
-                transform: scale(1.1) rotate(5deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
+                transform: translateY(0);
             }
         }
 
         .page-header h1 {
             font-size: clamp(24px, 6vw, 38px);
-            background: linear-gradient(45deg, #FEF9E1, #E5D0AC, #FEF9E1, #E5D0AC);
-            background-size: 300% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #FEF9E1;
             margin-bottom: 6px;
-            text-shadow: 0 0 40px rgba(254, 249, 225, 0.8);
-            animation: shimmerBright 2s linear infinite;
+            text-shadow: 0 0 40px rgba(229, 208, 172, 0.8);
             font-weight: bold;
-            letter-spacing: 2px;
-            filter: drop-shadow(0 0 10px rgba(229, 208, 172, 0.8));
-        }
-
-        @keyframes shimmerBright {
-            to { background-position: 300% center; }
+            letter-spacing: 3px;
+            font-variant: small-caps;
         }
 
         .page-header p {
             font-size: clamp(12px, 3vw, 16px);
-            color: #FEF9E1;
+            color: #E5D0AC;
             font-style: italic;
-            text-shadow: 0 0 15px rgba(254, 249, 225, 0.6);
-            font-weight: bold;
+            text-shadow: 0 0 15px rgba(229, 208, 172, 0.6);
         }
 
         .page-header .from {
             font-size: clamp(11px, 2.5vw, 14px);
             color: #E5D0AC;
             margin-top: 4px;
-            font-weight: bold;
             text-shadow: 0 0 20px rgba(229, 208, 172, 0.8);
-            animation: pulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .page-header .ig-handle {
+            font-size: clamp(12px, 2.8vw, 15px);
+            color: #FEF9E1;
+            margin-top: 6px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 0 25px rgba(254, 249, 225, 0.9);
         }
 
         /* Content boxes */
@@ -246,66 +267,150 @@
             animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             backdrop-filter: blur(10px);
             position: relative;
-            overflow: hidden;
         }
 
         @keyframes popIn {
             0% {
                 opacity: 0;
-                transform: scale(0.5) rotate(-5deg);
+                transform: scale(0.5);
             }
             100% {
                 opacity: 1;
-                transform: scale(1) rotate(0deg);
+                transform: scale(1);
             }
         }
 
-        .content-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(229, 208, 172, 0.3), transparent);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .christmas-icon {
-            font-size: clamp(50px, 12vw, 70px);
-            margin-bottom: 12px;
-            animation: iconBounce 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(229, 208, 172, 0.8));
+        /* Animated icons replacement */
+        .animated-icon {
+            width: clamp(70px, 16vw, 100px);
+            height: clamp(70px, 16vw, 100px);
+            margin-bottom: 15px;
+            position: relative;
             cursor: pointer;
             transition: transform 0.3s;
             z-index: 1;
         }
 
-        .christmas-icon:hover {
-            transform: scale(1.2) rotate(10deg);
+        .animated-icon:hover {
+            transform: scale(1.1);
         }
 
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+        /* Santa icon */
+        .santa-icon {
+            animation: santaBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes santaBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .santa-hat {
+            width: 60%;
+            height: 40%;
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: 0;
+            left: 20%;
+            box-shadow: 0 0 20px rgba(163, 29, 29, 0.6);
+        }
+
+        .santa-hat::after {
+            content: '';
+            position: absolute;
+            width: 25%;
+            height: 25%;
+            background: #FEF9E1;
+            border-radius: 50%;
+            top: -10%;
+            right: -8%;
+            box-shadow: 0 0 15px rgba(254, 249, 225, 0.8);
+        }
+
+        .santa-face {
+            width: 70%;
+            height: 50%;
+            background: linear-gradient(135deg, #FEF9E1, #E5D0AC);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 15%;
+            left: 15%;
+            box-shadow: 0 0 25px rgba(229, 208, 172, 0.6);
+        }
+
+        .santa-beard {
+            width: 60%;
+            height: 35%;
+            background: #FEF9E1;
+            border-radius: 50% 50% 60% 60%;
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            box-shadow: 0 0 20px rgba(254, 249, 225, 0.8);
+        }
+
+        /* Crystal ball icon */
+        .crystal-icon {
+            width: clamp(80px, 18vw, 110px);
+            height: clamp(80px, 18vw, 110px);
+            margin-bottom: 18px;
+            position: relative;
+            animation: crystalFloat 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .crystal-icon:hover {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        @keyframes crystalFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .crystal-sphere {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 35% 35%, #FEF9E1, #E5D0AC, #A31D1D, #6D2323);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 60px rgba(229, 208, 172, 0.9),
+                inset 0 0 50px rgba(254, 249, 225, 0.5);
+            animation: crystalGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes crystalGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 60px rgba(229, 208, 172, 0.9),
+                    inset 0 0 50px rgba(254, 249, 225, 0.5);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 80px rgba(229, 208, 172, 1),
+                    inset 0 0 70px rgba(254, 249, 225, 0.8);
+            }
+        }
+
+        .crystal-stand {
+            width: 50%;
+            height: 20%;
+            background: linear-gradient(135deg, #6D2323, #A31D1D);
+            position: absolute;
+            bottom: -10%;
+            left: 25%;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
         label {
             font-size: clamp(15px, 3.5vw, 20px);
-            background: linear-gradient(45deg, #A31D1D, #6D2323, #A31D1D);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #6D2323;
             margin-bottom: 10px;
             font-weight: bold;
             text-align: center;
-            animation: shimmerBright 2s linear infinite;
             z-index: 1;
         }
 
@@ -372,20 +477,6 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            animation: buttonGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes buttonGlow {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 30px rgba(163, 29, 29, 0.6),
-                    inset 0 0 30px rgba(254, 249, 225, 0.2);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 50px rgba(229, 208, 172, 0.8),
-                    inset 0 0 50px rgba(254, 249, 225, 0.4);
-            }
         }
 
         .btn::before {
@@ -408,7 +499,6 @@
 
         .btn:active {
             transform: scale(0.95);
-            background-position: 100% center;
         }
 
         /* Fortune room */
@@ -422,39 +512,6 @@
             z-index: 2;
         }
 
-        .crystal-ball {
-            width: 90px;
-            height: 90px;
-            background: radial-gradient(circle at 35% 35%, #FEF9E1, #E5D0AC, #A31D1D, #6D2323);
-            border-radius: 50%;
-            box-shadow: 
-                0 0 60px rgba(229, 208, 172, 0.9),
-                inset 0 0 50px rgba(254, 249, 225, 0.5);
-            animation: crystalFloat 3s ease-in-out infinite;
-            margin-bottom: 20px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .crystal-ball:hover {
-            transform: scale(1.15) rotate(10deg);
-        }
-
-        @keyframes crystalFloat {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 60px rgba(229, 208, 172, 0.9),
-                    inset 0 0 50px rgba(254, 249, 225, 0.5);
-                transform: translateY(0) scale(1);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 80px rgba(229, 208, 172, 1),
-                    inset 0 0 70px rgba(254, 249, 225, 0.8);
-                transform: translateY(-15px) scale(1.1);
-            }
-        }
-
         .instruction {
             font-size: clamp(13px, 3vw, 16px);
             color: #FEF9E1;
@@ -464,85 +521,106 @@
             border-radius: 22px;
             max-width: 450px;
             text-shadow: 0 0 15px rgba(254, 249, 225, 0.8);
-            background: linear-gradient(135deg, rgba(254, 249, 225, 0.2), rgba(229, 208, 172, 0.2));
-            border: 3px solid rgba(229, 208, 172, 0.6);
+            background: linear-gradient(135deg, rgba(254, 249, 225, 0.15), rgba(229, 208, 172, 0.15));
+            border: 2px solid rgba(229, 208, 172, 0.5);
             box-shadow: 
-                0 0 40px rgba(229, 208, 172, 0.4),
-                inset 0 0 40px rgba(254, 249, 225, 0.1);
+                0 0 40px rgba(229, 208, 172, 0.3),
+                inset 0 0 40px rgba(254, 249, 225, 0.08);
             backdrop-filter: blur(10px);
             font-weight: 600;
-            animation: floatInstruction 3s ease-in-out infinite;
         }
 
-        @keyframes floatInstruction {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Card deck */
+        /* Card deck with illustrated cards */
         .card-deck {
             position: relative;
             width: 200px;
             height: 320px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
             cursor: pointer;
             transition: transform 0.3s ease;
-            animation: deckFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes deckFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
         }
 
         .card-deck:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.05);
         }
 
         .card-deck:active {
-            transform: scale(0.95) rotate(-5deg);
+            transform: scale(0.95);
         }
 
         .deck-card {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #A31D1D, #6D2323, #8B0000);
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
             border-radius: 18px;
-            border: 5px solid #E5D0AC;
+            border: 4px solid #E5D0AC;
             box-shadow: 
                 0 15px 40px rgba(0, 0, 0, 0.4),
                 0 0 50px rgba(229, 208, 172, 0.6),
-                inset 0 0 50px rgba(254, 249, 225, 0.2);
+                inset 0 0 50px rgba(254, 249, 225, 0.15);
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        /* Card back pattern */
+        .card-pattern {
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(229, 208, 172, 0.1) 20px, rgba(229, 208, 172, 0.1) 40px),
+                repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(254, 249, 225, 0.05) 20px, rgba(254, 249, 225, 0.05) 40px);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            animation: cardFloat 3s ease-in-out infinite;
-            transition: all 0.3s;
+            position: relative;
         }
 
-        @keyframes cardFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        .card-center-ornament {
+            width: 60px;
+            height: 60px;
+            border: 3px solid #E5D0AC;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(254, 249, 225, 0.3), transparent);
+            box-shadow: 
+                0 0 30px rgba(229, 208, 172, 0.8),
+                inset 0 0 20px rgba(254, 249, 225, 0.4);
+            animation: ornamentSpin 4s linear infinite;
+        }
+
+        @keyframes ornamentSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .card-center-ornament::before,
+        .card-center-ornament::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E5D0AC, transparent);
+            top: 50%;
+            left: 0;
+        }
+
+        .card-center-ornament::after {
+            transform: rotate(90deg);
         }
 
         .deck-card:nth-child(1) {
             transform: translate(-5px, -5px) rotate(-2.5deg);
             z-index: 1;
-            animation-delay: 0s;
         }
 
         .deck-card:nth-child(2) {
             transform: translate(-2.5px, -2.5px) rotate(-1.2deg);
             z-index: 2;
-            animation-delay: 0.5s;
         }
 
         .deck-card:nth-child(3) {
             transform: translate(0, 0) rotate(0deg);
             z-index: 3;
-            animation-delay: 1s;
             filter: drop-shadow(0 0 30px rgba(229, 208, 172, 1));
         }
 
@@ -553,15 +631,11 @@
             font-weight: bold;
             text-shadow: 0 0 20px rgba(229, 208, 172, 1);
             margin-bottom: 18px;
-            animation: pulseText 1.5s ease-in-out infinite;
+            font-variant: small-caps;
+            letter-spacing: 2px;
         }
 
-        @keyframes pulseText {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        /* Card reveal - COMPACT FIT IN ONE SCREEN */
+        /* Card reveal - COMPACT */
         .card-reveal-container {
             width: 100%;
             max-width: 450px;
@@ -584,14 +658,14 @@
                 0 25px 80px rgba(0, 0, 0, 0.4);
             border: 4px solid #E5D0AC;
             position: relative;
-            animation: revealPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: revealPop 0.8s ease;
             width: 100%;
         }
 
         @keyframes revealPop {
             0% {
                 opacity: 0;
-                transform: scale(0.3) rotateY(180deg);
+                transform: scale(0.5) rotateY(90deg);
             }
             100% {
                 opacity: 1;
@@ -606,7 +680,7 @@
             position: absolute;
             font-size: clamp(25px, 6vw, 35px);
             color: #A31D1D;
-            animation: cornerSpin 4s linear infinite;
+            animation: cornerFloat 4s ease-in-out infinite;
         }
 
         .card-frame::before {
@@ -617,12 +691,12 @@
         .card-frame::after {
             bottom: 10px;
             right: 10px;
-            animation-direction: reverse;
+            animation-delay: 2s;
         }
 
-        @keyframes cornerSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes cornerFloat {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
         }
 
         .card-reveal-top {
@@ -634,14 +708,11 @@
 
         .reveal-title {
             font-size: clamp(14px, 3.3vw, 18px);
-            background: linear-gradient(45deg, #A31D1D, #6D2323, #A31D1D);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #A31D1D;
             font-weight: bold;
             margin-bottom: 5px;
-            animation: shimmerBright 2s linear infinite;
+            font-variant: small-caps;
+            letter-spacing: 1px;
         }
 
         .reveal-user-info {
@@ -651,39 +722,133 @@
             font-weight: 600;
         }
 
-        .card-image {
-            font-size: clamp(55px, 13vw, 75px);
-            margin: 10px 0;
-            animation: imageSpinIn 1s ease;
-            filter: drop-shadow(0 0 30px rgba(229, 208, 172, 1));
+        /* Tarot card illustration */
+        .card-illustration {
+            width: clamp(80px, 18vw, 110px);
+            height: clamp(80px, 18vw, 110px);
+            margin: 12px auto;
+            position: relative;
+            animation: cardAppear 1s ease;
             cursor: pointer;
             transition: transform 0.3s;
         }
 
-        .card-image:hover {
-            transform: scale(1.15) rotate(15deg);
+        .card-illustration:hover {
+            transform: scale(1.15) rotate(5deg);
         }
 
-        @keyframes imageSpinIn {
-            0% { transform: scale(0) rotate(-360deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        /* Star illustration */
+        .star-illustration {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .star-shape {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #E5D0AC, #FEF9E1);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            box-shadow: 0 0 40px rgba(229, 208, 172, 1);
+            animation: starPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.1); filter: brightness(1.2); }
+        }
+
+        /* Sun illustration */
+        .sun-illustration {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .sun-circle {
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, #FEF9E1, #E5D0AC);
+            border-radius: 50%;
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            box-shadow: 0 0 50px rgba(229, 208, 172, 1);
+            animation: sunGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes sunGlow {
+            0%, 100% { box-shadow: 0 0 50px rgba(229, 208, 172, 1); }
+            50% { box-shadow: 0 0 70px rgba(254, 249, 225, 1); }
+        }
+
+        .sun-ray {
+            position: absolute;
+            width: 20%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #E5D0AC, transparent);
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 50%;
+            animation: rayRotate 8s linear infinite;
+        }
+
+        @keyframes rayRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Generic card designs for each type */
+        .world-illustration {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #E5D0AC, #A31D1D);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(229, 208, 172, 0.9);
+            animation: worldSpin 10s linear infinite;
+        }
+
+        @keyframes worldSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .heart-illustration {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .heart-shape {
+            width: 70%;
+            height: 70%;
+            background: linear-gradient(135deg, #A31D1D, #E5D0AC);
+            position: absolute;
+            top: 20%;
+            left: 15%;
+            transform: rotate(-45deg);
+            border-radius: 50% 50% 0 50%;
+            box-shadow: 0 0 40px rgba(163, 29, 29, 0.8);
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.1); }
         }
 
         .card-name {
             font-size: clamp(18px, 4.2vw, 24px);
-            background: linear-gradient(45deg, #A31D1D, #E5D0AC, #6D2323, #A31D1D);
-            background-size: 300% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #A31D1D;
             margin-bottom: 10px;
             font-weight: bold;
-            animation: shimmerRainbow 3s linear infinite;
-            filter: drop-shadow(0 0 8px rgba(229, 208, 172, 0.5));
-        }
-
-        @keyframes shimmerRainbow {
-            to { background-position: 300% center; }
+            text-align: center;
+            letter-spacing: 1px;
         }
 
         .section-divider {
@@ -691,19 +856,14 @@
             height: 2px;
             background: linear-gradient(90deg, transparent, #E5D0AC, #A31D1D, #E5D0AC, transparent);
             margin: 10px auto;
-            border-radius: 1px;
         }
 
         .section-title {
             font-size: clamp(12px, 2.8vw, 15px);
-            background: linear-gradient(45deg, #A31D1D, #6D2323, #A31D1D);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #A31D1D;
             font-weight: bold;
             margin: 8px 0 6px;
-            animation: shimmerBright 2s linear infinite;
+            text-align: center;
         }
 
         .card-prediction, .card-prediction-thai {
@@ -724,9 +884,6 @@
             border-radius: 18px;
             border: 2px solid #E5D0AC;
             margin: 10px 0;
-            box-shadow: 
-                0 0 25px rgba(229, 208, 172, 0.3),
-                inset 0 0 30px rgba(254, 249, 225, 0.2);
         }
 
         .design-item {
@@ -741,16 +898,11 @@
         }
 
         .design-item::before {
-            content: '⭐';
+            content: '✦';
             position: absolute;
             left: 0;
             font-size: 11px;
-            animation: starRotate 2s linear infinite;
-        }
-
-        @keyframes starRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            color: #A31D1D;
         }
 
         .christmas-wish {
@@ -759,9 +911,6 @@
             border-radius: 18px;
             border: 2px solid #A31D1D;
             margin-top: 10px;
-            box-shadow: 
-                0 0 25px rgba(163, 29, 29, 0.3),
-                inset 0 0 30px rgba(254, 249, 225, 0.15);
         }
 
         .wish-label {
@@ -769,6 +918,7 @@
             color: #A31D1D;
             margin-bottom: 8px;
             font-weight: bold;
+            text-align: center;
         }
 
         .wish-text {
@@ -777,6 +927,7 @@
             line-height: 1.5;
             font-style: italic;
             font-weight: 600;
+            text-align: center;
         }
 
         .wish-signature {
@@ -798,40 +949,43 @@
             font-style: italic;
         }
 
-        /* Dice rolling section */
+        /* Dice section */
         .dice-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 15px;
             width: 100%;
         }
 
+        .dice-instruction {
+            font-size: clamp(14px, 3.2vw, 17px);
+            color: #6D2323;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
         .dice {
-            width: clamp(70px, 16vw, 90px);
-            height: clamp(70px, 16vw, 90px);
+            width: clamp(80px, 18vw, 100px);
+            height: clamp(80px, 18vw, 100px);
             background: linear-gradient(135deg, #FEF9E1, #E5D0AC);
             border: 4px solid #A31D1D;
-            border-radius: 15px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(35px, 8vw, 50px);
+            font-size: clamp(40px, 10vw, 55px);
             font-weight: bold;
             color: #6D2323;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.3),
-                0 0 30px rgba(229, 208, 172, 0.5),
-                inset 0 0 30px rgba(254, 249, 225, 0.5);
-            margin-bottom: 15px;
-            animation: diceFloat 2s ease-in-out infinite;
-        }
-
-        @keyframes diceFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(229, 208, 172, 0.5),
+                inset 0 0 40px rgba(254, 249, 225, 0.5);
+            margin-bottom: 18px;
+            position: relative;
         }
 
         .dice:hover {
@@ -853,49 +1007,52 @@
             75% { transform: rotate(270deg) scale(1.1); }
         }
 
-        .dice-instruction {
-            font-size: clamp(13px, 3vw, 16px);
-            color: #FEF9E1;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(254, 249, 225, 0.8);
+        /* Dice dots */
+        .dice-dot {
+            position: absolute;
+            width: 12%;
+            height: 12%;
+            background: #A31D1D;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(163, 29, 29, 0.6);
         }
 
         .lucky-numbers {
             background: linear-gradient(135deg, rgba(163, 29, 29, 0.3), rgba(229, 208, 172, 0.3));
-            padding: clamp(12px, 3vw, 16px);
-            border-radius: 18px;
+            padding: clamp(15px, 3.5vw, 20px);
+            border-radius: 20px;
             border: 3px solid #E5D0AC;
-            margin-top: 12px;
+            margin-top: 15px;
             text-align: center;
             box-shadow: 
-                0 0 30px rgba(229, 208, 172, 0.5),
-                inset 0 0 30px rgba(254, 249, 225, 0.2);
+                0 0 35px rgba(229, 208, 172, 0.5),
+                inset 0 0 35px rgba(254, 249, 225, 0.2);
             width: 100%;
         }
 
         .lucky-numbers-title {
-            font-size: clamp(13px, 3vw, 16px);
+            font-size: clamp(14px, 3.2vw, 17px);
             color: #A31D1D;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .lucky-numbers-display {
-            font-size: clamp(20px, 4.8vw, 28px);
+            font-size: clamp(22px, 5.2vw, 30px);
             color: #6D2323;
             font-weight: bold;
             letter-spacing: 3px;
-            margin: 8px 0;
-            text-shadow: 0 0 10px rgba(229, 208, 172, 0.5);
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(229, 208, 172, 0.6);
         }
 
         .lucky-numbers-hint {
-            font-size: clamp(9px, 2.1vw, 11px);
+            font-size: clamp(10px, 2.3vw, 12px);
             color: #6D2323;
             font-style: italic;
-            margin-top: 6px;
+            margin-top: 8px;
+            line-height: 1.5;
         }
 
         /* DM section */
@@ -916,34 +1073,61 @@
         }
 
         @keyframes dmPop {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            25% { transform: scale(1.05) rotate(2deg); }
-            50% { transform: scale(0.95) rotate(-2deg); }
-            75% { transform: scale(1.02) rotate(1deg); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .dm-icon {
-            font-size: clamp(60px, 14vw, 85px);
-            margin-bottom: 15px;
-            animation: dmBounce 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 40px rgba(229, 208, 172, 1));
+        /* Letter illustration */
+        .letter-icon {
+            width: clamp(90px, 20vw, 120px);
+            height: clamp(70px, 16vw, 95px);
+            margin: 0 auto 18px;
+            position: relative;
+            animation: letterFloat 2s ease-in-out infinite;
         }
 
-        @keyframes dmBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.1); }
+        @keyframes letterFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .envelope {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FEF9E1, #E5D0AC);
+            border-radius: 5px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope-flap {
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(135deg, #E5D0AC, #A31D1D);
+            position: absolute;
+            top: 0;
+            clip-path: polygon(0 0, 50% 60%, 100% 0);
+            box-shadow: 0 5px 20px rgba(163, 29, 29, 0.4);
+        }
+
+        .envelope-seal {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(163, 29, 29, 0.8);
         }
 
         .dm-title {
             font-size: clamp(24px, 5.8vw, 36px);
-            background: linear-gradient(45deg, #A31D1D, #E5D0AC, #6D2323, #A31D1D);
-            background-size: 300% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #A31D1D;
             margin-bottom: 15px;
             font-weight: bold;
-            animation: shimmerRainbow 3s linear infinite;
+            letter-spacing: 1px;
         }
 
         .dm-message {
@@ -952,6 +1136,20 @@
             line-height: 1.7;
             margin-bottom: 15px;
             font-weight: 600;
+        }
+
+        .ig-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #A31D1D, #6D2323);
+            color: #FEF9E1;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: clamp(14px, 3.2vw, 18px);
+            font-weight: bold;
+            margin: 12px 0;
+            border: 3px solid #E5D0AC;
+            box-shadow: 0 0 30px rgba(163, 29, 29, 0.6);
+            letter-spacing: 1px;
         }
 
         .dm-notice {
@@ -977,43 +1175,6 @@
             text-align: left;
             margin-bottom: 8px;
             font-weight: 600;
-        }
-
-        /* Floating button */
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: clamp(60px, 15vw, 75px);
-            height: clamp(60px, 15vw, 75px);
-            background: linear-gradient(135deg, #A31D1D, #6D2323);
-            color: #FEF9E1;
-            border: 4px solid #E5D0AC;
-            border-radius: 50%;
-            font-size: clamp(28px, 7vw, 38px);
-            cursor: pointer;
-            box-shadow: 
-                0 10px 35px rgba(163, 29, 29, 0.6),
-                0 0 50px rgba(229, 208, 172, 0.8);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            animation: floatingBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes floatingBounce {
-            0%, 100% { 
-                transform: translateY(0) scale(1);
-            }
-            50% { 
-                transform: translateY(-12px) scale(1.08);
-            }
-        }
-
-        .floating-btn:active {
-            transform: scale(0.9);
         }
 
         /* Modal */
@@ -1051,16 +1212,14 @@
             max-height: 85vh;
             overflow-y: auto;
             border: 4px solid #E5D0AC;
-            box-shadow: 
-                0 0 70px rgba(229, 208, 172, 0.9),
-                inset 0 0 80px rgba(254, 249, 225, 0.3);
-            animation: modalBounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 0 70px rgba(229, 208, 172, 0.9);
+            animation: modalBounceIn 0.5s ease;
         }
 
         @keyframes modalBounceIn {
             0% {
                 opacity: 0;
-                transform: scale(0.3) translateY(-50px);
+                transform: scale(0.5) translateY(-30px);
             }
             100% {
                 opacity: 1;
@@ -1079,13 +1238,8 @@
 
         .modal-title {
             font-size: clamp(20px, 4.8vw, 28px);
-            background: linear-gradient(45deg, #A31D1D, #E5D0AC, #A31D1D);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #A31D1D;
             font-weight: bold;
-            animation: shimmerBright 2s linear infinite;
         }
 
         .close-btn {
@@ -1122,17 +1276,7 @@
             padding: clamp(14px, 3.5vw, 20px);
             border-radius: 18px;
             border: 3px solid #E5D0AC;
-            box-shadow: 
-                0 6px 20px rgba(0, 0, 0, 0.2),
-                0 0 30px rgba(229, 208, 172, 0.3);
             transition: all 0.3s;
-        }
-
-        .wish-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.3),
-                0 0 50px rgba(229, 208, 172, 0.6);
         }
 
         .wish-item-name {
@@ -1146,7 +1290,6 @@
             font-size: clamp(11px, 2.5vw, 13px);
             color: #6D2323;
             line-height: 1.5;
-            font-style: italic;
             font-weight: 600;
         }
 
@@ -1159,7 +1302,7 @@
             font-weight: 600;
         }
 
-        /* Scrollbar styling */
+        /* Scrollbar */
         .card-reveal-container::-webkit-scrollbar,
         .modal-content::-webkit-scrollbar {
             width: 6px;
@@ -1200,29 +1343,46 @@
 </head>
 <body>
     <div class="container">
+        <!-- Audio Control -->
+        <div class="audio-control" id="audioControl" onclick="toggleAudio()">
+            <svg id="audioIcon" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+        </div>
+
+        <!-- Background Music -->
+        <audio id="bgMusic" loop>
+            <source src="https://assets.mixkit.co/music/preview/mixkit-christmas-magic-132.mp3" type="audio/mpeg">
+        </audio>
+
         <!-- Christmas Lights Border -->
         <div class="christmas-lights" id="lightsContainer"></div>
 
         <!-- Page 1: Name & Birthday Input -->
         <div class="page active" id="page1">
             <div class="page-header">
-                <h1>🎄 Christmas Tarot 2026 🎄</h1>
+                <h1>Christmas Tarot 2026</h1>
                 <p>Discover Your Magical Destiny</p>
-                <p class="from">✨ From Thimabhorn K. (เบียร์) ✨</p>
+                <p class="from">From Thimabhorn K. (Beer)</p>
+                <p class="ig-handle">Instagram: @_bbeerr</p>
             </div>
             <div class="content-box">
-                <div class="christmas-icon" onclick="this.style.transform='scale(1.5) rotate(360deg)'">🎅</div>
-                <div class="form-row">
-                    <label for="userName">What's your name? 🌟</label>
-                    <input type="text" id="userName" placeholder="Enter your magical name...">
+                <div class="animated-icon santa-icon">
+                    <div class="santa-hat"></div>
+                    <div class="santa-face"></div>
+                    <div class="santa-beard"></div>
                 </div>
                 <div class="form-row">
-                    <label for="userBirthday">When were you born? 🎂</label>
+                    <label for="userName">What's your name?</label>
+                    <input type="text" id="userName" placeholder="Enter your name...">
+                </div>
+                <div class="form-row">
+                    <label for="userBirthday">When were you born?</label>
                     <input type="text" id="userBirthday" placeholder="e.g. January 15, 2000">
-                    <div class="input-hint">✨ Type your birth date ✨</div>
+                    <div class="input-hint">Type your birth date</div>
                 </div>
                 <button class="btn" onclick="goToCardSelection()">
-                    <span style="position: relative; z-index: 1;">🎁 Enter Magic Realm 🎁</span>
+                    <span style="position: relative; z-index: 1;">Enter Magic Realm</span>
                 </button>
             </div>
         </div>
@@ -1230,69 +1390,81 @@
         <!-- Page 2: Card Selection -->
         <div class="page" id="page2">
             <div class="page-header">
-                <h1>🔮 Choose Your Destiny 🔮</h1>
+                <h1>Choose Your Destiny</h1>
                 <p>The cards are calling you...</p>
             </div>
             <div class="fortune-room">
-                <div class="crystal-ball" onclick="this.style.transform='scale(1.3) rotate(360deg)'"></div>
-                <div class="instruction">
-                    🌟 <span id="userNameDisplay"></span>, born on <span id="birthdayDisplay"></span>... 
-                    <br>Close your eyes, make a wish, and tap the magical deck! ✨
+                <div class="crystal-icon">
+                    <div class="crystal-sphere"></div>
+                    <div class="crystal-stand"></div>
                 </div>
-                <div class="deck-instruction">✨ TAP THE MAGIC DECK ✨</div>
+                <div class="instruction">
+                    <span id="userNameDisplay"></span>, born on <span id="birthdayDisplay"></span>... 
+                    <br>Close your eyes, breathe deeply, and tap the deck when ready...
+                </div>
+                <div class="deck-instruction">Tap the Deck</div>
                 <div class="card-deck" onclick="drawCard()">
-                    <div class="deck-card">🌟</div>
-                    <div class="deck-card">✨</div>
-                    <div class="deck-card">⭐</div>
+                    <div class="deck-card">
+                        <div class="card-pattern">
+                            <div class="card-center-ornament"></div>
+                        </div>
+                    </div>
+                    <div class="deck-card">
+                        <div class="card-pattern">
+                            <div class="card-center-ornament"></div>
+                        </div>
+                    </div>
+                    <div class="deck-card">
+                        <div class="card-pattern">
+                            <div class="card-center-ornament"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Page 3: Card Result - FIT IN ONE SCREEN -->
+        <!-- Page 3: Card Result -->
         <div class="page" id="page3">
             <div class="card-reveal-container">
                 <div class="card-frame">
-                    <!-- Top section -->
                     <div class="card-reveal-top">
-                        <div class="reveal-title">🎄 Christmas Fortune 2026 🎄</div>
+                        <div class="reveal-title">Christmas Fortune 2026</div>
                         <div class="reveal-user-info"><span id="displayUserName"></span> • <span id="displayUserBirthday"></span></div>
                     </div>
 
-                    <!-- Card content -->
-                    <div class="card-image" id="cardEmoji" onclick="this.style.transform='scale(1.3) rotate(360deg)'"></div>
+                    <div class="card-illustration" id="cardIllustration"></div>
                     <div class="card-name" id="cardName"></div>
                     
                     <div class="section-divider"></div>
                     
-                    <div class="section-title">✨ Fortune ✨</div>
+                    <div class="section-title">Your 2026 Fortune</div>
                     <div class="card-prediction" id="cardPrediction"></div>
                     
                     <div class="section-divider"></div>
                     
-                    <div class="section-title">🌟 คำทำนาย 🌟</div>
+                    <div class="section-title">คำทำนาย</div>
                     <div class="card-prediction-thai" id="cardPredictionThai"></div>
                     
                     <div class="section-divider"></div>
                     
                     <div class="human-design-section">
-                        <div class="section-title">🔮 Soul Blueprint</div>
+                        <div class="section-title">Soul Blueprint</div>
                         <div id="humanDesignContent"></div>
                     </div>
                     
                     <div class="christmas-wish">
-                        <div class="wish-label">🎄 From Beer 🍺</div>
+                        <div class="wish-label">Blessings from Beer</div>
                         <div class="wish-text" id="christmasWishText"></div>
-                        <div class="wish-signature">- Thimabhorn K. 💝</div>
+                        <div class="wish-signature">- Thimabhorn K.</div>
                     </div>
 
-                    <!-- Footer branding -->
                     <div class="card-footer">
-                        ✨ Christmas Tarot 2026 by Thimabhorn K. ✨
+                        Christmas Tarot 2026 by Thimabhorn K. • @_bbeerr
                     </div>
                 </div>
 
                 <button class="btn" onclick="goToDiceRoll()" style="margin-top: 15px;">
-                    <span style="position: relative; z-index: 1;">🎲 Get Lucky Number 🎲</span>
+                    <span style="position: relative; z-index: 1;">Get Lucky Number</span>
                 </button>
             </div>
         </div>
@@ -1300,21 +1472,23 @@
         <!-- Page 4: Dice Roll -->
         <div class="page" id="page4">
             <div class="page-header">
-                <h1>🎲 Lucky Numbers 🎲</h1>
+                <h1>Lucky Numbers</h1>
                 <p>Roll for your fortune!</p>
             </div>
             <div class="content-box">
                 <div class="dice-container">
-                    <div class="dice-instruction">🎰 Tap to Roll the Magic Dice! 🎰</div>
-                    <div class="dice" id="dice" onclick="rollDice()">🎲</div>
+                    <div class="dice-instruction">Tap to Roll the Dice</div>
+                    <div class="dice" id="dice" onclick="rollDice()">
+                        <div class="dice-dot" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+                    </div>
                     <div class="lucky-numbers" id="luckyNumbersDisplay" style="display: none;">
-                        <div class="lucky-numbers-title">✨ Your Lucky Numbers ✨</div>
+                        <div class="lucky-numbers-title">Your Lucky Numbers</div>
                         <div class="lucky-numbers-display" id="numbersResult"></div>
-                        <div class="lucky-numbers-hint">🎊 This could be your winning lottery number! 🎊</div>
+                        <div class="lucky-numbers-hint">These could be your winning lottery numbers for the next draw!</div>
                     </div>
                 </div>
                 <button class="btn" onclick="goToDMPage()" id="continueBtn" style="display: none;">
-                    <span style="position: relative; z-index: 1;">💝 Send Wishes 💝</span>
+                    <span style="position: relative; z-index: 1;">Continue</span>
                 </button>
             </div>
         </div>
@@ -1322,57 +1496,46 @@
         <!-- Page 5: Instagram DM Invitation -->
         <div class="page" id="page5">
             <div class="dm-section">
-                <div class="dm-icon">💌</div>
-                <div class="dm-title">Send Your Wishes! 💝</div>
-                <div class="dm-message">
-                    I'd love to hear from you! 🎄✨
+                <div class="letter-icon">
+                    <div class="envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-seal"></div>
+                    </div>
                 </div>
+                <div class="dm-title">Send Your Wishes!</div>
+                <div class="dm-message">
+                    I'd love to hear from you!
+                </div>
+                
+                <div class="ig-badge">@_bbeerr</div>
                 
                 <div class="dm-notice">
-                    <div class="dm-notice-title">📱 How to Send Wishes</div>
+                    <div class="dm-notice-title">How to Send Wishes</div>
                     <div class="dm-notice-text">
-                        <strong>EN:</strong> Please DM me on Instagram! The app isn't finished yet, so I can't receive messages here. Let's chat directly! 💝
+                        <strong>EN:</strong> Please DM me on Instagram! The app isn't finished yet, so I can't receive messages here. Let's chat directly!
                     </div>
                     <div class="dm-notice-text">
-                        <strong>TH:</strong> เบียร์ยังทำแอพไม่เสร็จ เลยจะไม่ได้รับข้อความ ดังนั้นทัก DM Instagram มาจะดีกว่านะคะ! อิอิ ขออภัย จุ๊บๆ 💋✨
+                        <strong>TH:</strong> เบียร์ยังทำแอพไม่เสร็จ เลยจะไม่ได้รับข้อความ ดังนั้นทัก DM Instagram มาจะดีกว่านะคะ! อิอิ ขออภัย จุ๊บๆ
                     </div>
                 </div>
                 
-                <div class="christmas-icon">🎄⛄🎅🎁❄️✨💫</div>
-                
                 <button class="btn" onclick="startOver()">
-                    <span style="position: relative; z-index: 1;">🔄 Play Again 🔄</span>
+                    <span style="position: relative; z-index: 1;">Play Again</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Floating Button -->
-    <button class="floating-btn" id="floatingBtn" onclick="showWishesModal()">
-        💝
-    </button>
-
-    <!-- Wishes Modal -->
-    <div class="modal" id="wishesModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">💝 Magical Wishes 💝</h2>
-                <button class="close-btn" onclick="closeWishesModal()">×</button>
-            </div>
-            <div class="wishes-list" id="wishesList"></div>
-        </div>
-    </div>
-
     <script>
-        // Tarot cards for 2026
+        // Tarot cards with illustration types
         const tarotCards = [
             {
                 name: "The Star",
                 nameThai: "ดาวแห่งความหวัง",
-                emoji: "⭐",
+                illustration: "star",
                 prediction: "Hope shines in 2026! Dreams guide success. Trust yourself, embrace opportunities.",
                 predictionThai: "ความหวังส่องสว่างในปี 2026 ความฝันนำทางสู่ความสำเร็จ เชื่อมั่นตัวเองและโอบรับโอกาส",
-                wish: "May your dreams become reality! ✨",
+                wish: "May your dreams become reality!",
                 humanDesign: {
                     type: "Manifesting Generator",
                     strategy: "Multi-passionate creator",
@@ -1383,10 +1546,10 @@
             {
                 name: "The Sun",
                 nameThai: "ดวงอาทิตย์",
-                emoji: "☀️",
+                illustration: "sun",
                 prediction: "Radiant joy fills 2026! Success illuminates your life. Shine brilliantly this year.",
                 predictionThai: "ความสุขเจิดจรัสในปี 2026 ความสำเร็จส่องสว่างชีวิต นี่คือปีที่เปล่งประกาย",
-                wish: "May sunshine surround you! 🌟",
+                wish: "May sunshine surround you!",
                 humanDesign: {
                     type: "Pure Generator",
                     strategy: "Abundance attractor",
@@ -1397,10 +1560,10 @@
             {
                 name: "The World",
                 nameThai: "โลกแห่งความสำเร็จ",
-                emoji: "🌍",
+                illustration: "world",
                 prediction: "Achievement is yours in 2026! Reach milestones, explore horizons.",
                 predictionThai: "ความสำเร็จของคุณในปี 2026 บรรลุเป้าหมายและสำรวจขอบฟ้าใหม่",
-                wish: "May you conquer every summit! 🎊",
+                wish: "May you conquer every summit!",
                 humanDesign: {
                     type: "Manifestor",
                     strategy: "Trailblazer",
@@ -1411,10 +1574,10 @@
             {
                 name: "The Lovers",
                 nameThai: "คู่รักแห่งความผูกพัน",
-                emoji: "💕",
+                illustration: "heart",
                 prediction: "Love blossoms in 2026! Deep connections bring joy. Your heart is sanctuary.",
                 predictionThai: "ความรักเบ่งบานในปี 2026 ความสัมพันธ์ลึกซึ้งนำความสุข หัวใจเป็นที่ศักดิ์สิทธิ์",
-                wish: "May love surround you! 💖",
+                wish: "May love surround you!",
                 humanDesign: {
                     type: "Projector",
                     strategy: "Relationship guide",
@@ -1425,10 +1588,10 @@
             {
                 name: "Wheel of Fortune",
                 nameThai: "วงล้อแห่งโชคชะตา",
-                emoji: "🎡",
+                illustration: "wheel",
                 prediction: "Lucky changes in 2026! Fortune favors you. Embrace transformations.",
                 predictionThai: "การเปลี่ยนแปลงโชคดีในปี 2026 โชคชะตาเข้าข้างคุณ โอบรับการเปลี่ยนแปลง",
-                wish: "May luck dance with you! 🍀",
+                wish: "May luck dance with you!",
                 humanDesign: {
                     type: "Reflector",
                     strategy: "Universal timing",
@@ -1439,10 +1602,10 @@
             {
                 name: "The Magician",
                 nameThai: "นักเวทย์แห่งพลัง",
-                emoji: "🎩",
+                illustration: "star",
                 prediction: "Talents manifest in 2026! Transform visions to reality. Create miracles.",
                 predictionThai: "พรสวรรค์เป็นเวทมนตร์ในปี 2026 เปลี่ยนวิสัยทัศน์เป็นจริง สร้างปาฏิหาริย์",
-                wish: "May you weave miracles! ✨",
+                wish: "May you weave miracles!",
                 humanDesign: {
                     type: "Manifesting Generator",
                     strategy: "Rapid manifestation",
@@ -1453,10 +1616,10 @@
             {
                 name: "Strength",
                 nameThai: "พลังแห่งความกล้าหาญ",
-                emoji: "🦁",
+                illustration: "sun",
                 prediction: "Inner courage defines 2026! Overcome with grace. Emerge stronger, wiser.",
                 predictionThai: "ความกล้าหาญกำหนดปี 2026 ฝ่าฟันด้วยสง่างาม ออกมาแข็งแกร่งและฉลาด",
-                wish: "May you find strength! 💪",
+                wish: "May you find strength!",
                 humanDesign: {
                     type: "Generator (Enduring)",
                     strategy: "Sustained resilience",
@@ -1467,10 +1630,10 @@
             {
                 name: "The Empress",
                 nameThai: "จักรพรรดินี",
-                emoji: "👑",
+                illustration: "heart",
                 prediction: "Abundance in 2026! Creativity blooms, prosperity flows. Nurture growth.",
                 predictionThai: "ความอุดมสมบูรณ์ในปี 2026 ความคิดสร้างสรรค์บาน ความเจริญไหล เลี้ยงดูการเติบโต",
-                wish: "May prosperity embrace you! 🌺",
+                wish: "May prosperity embrace you!",
                 humanDesign: {
                     type: "Generator (Nurturing)",
                     strategy: "Abundance bringer",
@@ -1487,28 +1650,54 @@
             luckyNumbers: []
         };
         let allWishes = JSON.parse(localStorage.getItem('christmasWishes')) || [];
+        let audioPlaying = false;
 
-        // Create Christmas particles
+        // Audio control
+        function toggleAudio() {
+            const audio = document.getElementById('bgMusic');
+            const icon = document.getElementById('audioIcon');
+            
+            if (audioPlaying) {
+                audio.pause();
+                icon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+                audioPlaying = false;
+            } else {
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                icon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+                audioPlaying = true;
+            }
+        }
+
+        // Auto-play audio on first interaction
+        function tryAutoPlay() {
+            const audio = document.getElementById('bgMusic');
+            audio.play().then(() => {
+                audioPlaying = true;
+                document.getElementById('audioIcon').innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+            }).catch(e => {
+                console.log('Auto-play blocked, user will need to click audio button');
+            });
+        }
+
+        // Create particles
         function createParticles() {
             const container = document.querySelector('.container');
-            const snowSymbols = ['❄', '❅', '❆', '✻', '✼', '❄️'];
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                particle.textContent = snowSymbols[Math.floor(Math.random() * snowSymbols.length)];
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
                 particle.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(particle);
             }
         }
 
-        // Create twinkling stars
+        // Create stars
         function createStars() {
             const container = document.querySelector('.container');
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
@@ -1561,6 +1750,36 @@
             }
         }
 
+        // Create card illustrations dynamically
+        function createCardIllustration(type) {
+            let html = '';
+            
+            switch(type) {
+                case 'star':
+                    html = '<div class="star-illustration"><div class="star-shape"></div></div>';
+                    break;
+                case 'sun':
+                    html = `<div class="sun-illustration">
+                        <div class="sun-circle"></div>
+                        ${[...Array(8)].map((_, i) => `<div class="sun-ray" style="animation-delay: ${i * 0.5}s;"></div>`).join('')}
+                    </div>`;
+                    break;
+                case 'world':
+                    html = '<div class="world-illustration"></div>';
+                    break;
+                case 'heart':
+                    html = '<div class="heart-illustration"><div class="heart-shape"></div><div class="heart-shape" style="transform: rotate(90deg); left: 15%;"></div></div>';
+                    break;
+                case 'wheel':
+                    html = '<div class="world-illustration" style="animation: worldSpin 6s linear infinite;"></div>';
+                    break;
+                default:
+                    html = '<div class="star-illustration"><div class="star-shape"></div></div>';
+            }
+            
+            return html;
+        }
+
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -1568,10 +1787,9 @@
             document.getElementById(pageId).classList.add('active');
             
             if (pageId === 'page4') {
-                // Reset dice display
                 document.getElementById('luckyNumbersDisplay').style.display = 'none';
                 document.getElementById('continueBtn').style.display = 'none';
-                document.getElementById('dice').textContent = '🎲';
+                updateDiceFace(1);
             }
             
             if (pageId === 'page5') {
@@ -1584,11 +1802,11 @@
             const birthday = document.getElementById('userBirthday').value.trim();
             
             if (!userName) {
-                alert('🔮 Please reveal your magical name...');
+                alert('Please reveal your name...');
                 return;
             }
             if (!birthday) {
-                alert('🔮 Please share your birth date...');
+                alert('Please share your birth date...');
                 return;
             }
             
@@ -1596,6 +1814,8 @@
             currentUser.birthday = birthday;
             document.getElementById('userNameDisplay').textContent = userName;
             document.getElementById('birthdayDisplay').textContent = birthday;
+            
+            tryAutoPlay();
             showPage('page2');
         }
 
@@ -1604,18 +1824,17 @@
             currentUser.selectedCard = randomCard;
 
             setTimeout(() => {
-                // Display user info
                 document.getElementById('displayUserName').textContent = currentUser.name;
                 document.getElementById('displayUserBirthday').textContent = currentUser.birthday;
 
-                // Card info
-                document.getElementById('cardEmoji').textContent = randomCard.emoji;
+                // Create illustration
+                document.getElementById('cardIllustration').innerHTML = createCardIllustration(randomCard.illustration);
+                
                 document.getElementById('cardName').textContent = `${randomCard.name} • ${randomCard.nameThai}`;
                 document.getElementById('cardPrediction').textContent = randomCard.prediction;
                 document.getElementById('cardPredictionThai').textContent = randomCard.predictionThai;
                 document.getElementById('christmasWishText').textContent = randomCard.wish;
                 
-                // Human Design - compact
                 const hdContent = document.getElementById('humanDesignContent');
                 hdContent.innerHTML = `
                     <div class="design-item"><strong>Type:</strong> ${randomCard.humanDesign.type}</div>
@@ -1632,40 +1851,59 @@
             showPage('page4');
         }
 
+        // Update dice face with dots
+        function updateDiceFace(number) {
+            const dice = document.getElementById('dice');
+            dice.innerHTML = '';
+            
+            const positions = {
+                1: [[50, 50]],
+                2: [[25, 25], [75, 75]],
+                3: [[25, 25], [50, 50], [75, 75]],
+                4: [[25, 25], [25, 75], [75, 25], [75, 75]],
+                5: [[25, 25], [25, 75], [50, 50], [75, 25], [75, 75]],
+                6: [[25, 25], [25, 50], [25, 75], [75, 25], [75, 50], [75, 75]]
+            };
+            
+            positions[number].forEach(([top, left]) => {
+                const dot = document.createElement('div');
+                dot.className = 'dice-dot';
+                dot.style.top = top + '%';
+                dot.style.left = left + '%';
+                dot.style.transform = 'translate(-50%, -50%)';
+                dice.appendChild(dot);
+            });
+        }
+
         function rollDice() {
             const dice = document.getElementById('dice');
             const luckyDisplay = document.getElementById('luckyNumbersDisplay');
             const continueBtn = document.getElementById('continueBtn');
             
-            // Add rolling animation
             dice.classList.add('rolling');
             
-            // Simulate rolling
             let rollCount = 0;
             const rollInterval = setInterval(() => {
-                dice.textContent = Math.floor(Math.random() * 6) + 1;
+                updateDiceFace(Math.floor(Math.random() * 6) + 1);
                 rollCount++;
                 
-                if (rollCount > 10) {
+                if (rollCount > 12) {
                     clearInterval(rollInterval);
                     
                     // Generate lucky numbers
                     const luckyNums = [];
                     for (let i = 0; i < 6; i++) {
-                        luckyNums.push(Math.floor(Math.random() * 99) + 1);
+                        luckyNums.push(String(Math.floor(Math.random() * 99) + 1).padStart(2, '0'));
                     }
-                    luckyNums.sort((a, b) => a - b);
+                    luckyNums.sort((a, b) => parseInt(a) - parseInt(b));
                     currentUser.luckyNumbers = luckyNums;
                     
-                    // Display result
                     document.getElementById('numbersResult').textContent = luckyNums.join(' • ');
                     luckyDisplay.style.display = 'block';
                     continueBtn.style.display = 'block';
                     
-                    // Remove rolling class
                     dice.classList.remove('rolling');
                     
-                    // Save to localStorage
                     allWishes.push({
                         name: currentUser.name,
                         birthday: currentUser.birthday,
@@ -1674,7 +1912,6 @@
                         timestamp: new Date().toISOString()
                     });
                     localStorage.setItem('christmasWishes', JSON.stringify(allWishes));
-                    document.getElementById('floatingBtn').style.display = 'flex';
                 }
             }, 100);
         }
@@ -1700,14 +1937,14 @@
             wishesList.innerHTML = '';
 
             if (allWishes.length === 0) {
-                wishesList.innerHTML = '<div class="no-wishes">The magical book awaits... 🎄✨</div>';
+                wishesList.innerHTML = '<div class="no-wishes">No fortunes read yet...</div>';
             } else {
                 allWishes.forEach(wish => {
                     const wishItem = document.createElement('div');
                     wishItem.className = 'wish-item';
                     wishItem.innerHTML = `
-                        <div class="wish-item-name">✨ ${wish.name} • ${wish.card}</div>
-                        <div class="wish-item-text">🎲 Lucky: ${wish.luckyNumbers || 'N/A'}</div>
+                        <div class="wish-item-name">${wish.name} • ${wish.card}</div>
+                        <div class="wish-item-text">Lucky: ${wish.luckyNumbers || 'N/A'}</div>
                     `;
                     wishesList.appendChild(wishItem);
                 });
@@ -1730,10 +1967,6 @@
         createParticles();
         createStars();
         createChristmasLights();
-        
-        if (allWishes.length > 0) {
-            document.getElementById('floatingBtn').style.display = 'flex';
-        }
 
         // Prevent pull-to-refresh
         let lastTouchY = 0;
